@@ -1,0 +1,25 @@
+* {
+    font-family: 'Hahmlet', serif;
+}
+
+
+img {
+    margin: 10px 10px 10px 10px;
+    border: 8px solid gray;
+    border-radius: 15px;
+}
+
+
+.one {
+    color: royalblue;
+}
+
+#two {
+    background-color: darkgray;
+    width: 140px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
