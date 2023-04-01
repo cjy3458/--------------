@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script&family=Permanent+Marker&display=swap");
+
 html,
 body {
   display: flex;
@@ -23,14 +25,17 @@ body {
 p {
   font-size: 100%;
   color: white;
+  font-family: "Oleo Script", cursive;
 }
 
 .title {
-  font-size: 350%;
+  font-size: 500%;
   color: whitesmoke;
+  font-family: "Oleo Script", cursive;
 }
 
 .container {
   text-align: center;
   align-items: center;
+  width: 400%;
 }
