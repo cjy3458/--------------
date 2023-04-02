@@ -11,14 +11,27 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  /* grid-template-columns: 200px 200px 500px; */
-  grid-template-rows: repeat(3, auto);
-  gap: 50px;
+  grid-template-columns: 1fr, 3fr, 3fr;
+  grid-template-rows: 1fr, 3fr, 3fr;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  /* gap: 80px; */
+  /* align-items: stretch; */
+  /* justify-items: center; */
+  /* align-content: stretch; */
 }
 
 .item {
+  /* width: auto;
+  height: auto; */
+  border: 1px dashed black;
   color: whitesmoke;
   background-color: grey;
   /* padding: 20%; */
+}
+
+.item:nth-child(1) {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
 }
