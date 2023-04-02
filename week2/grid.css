@@ -7,16 +7,17 @@ body {
   justify-content: center;
   background-color: black;
   align-content: center;
+  margin: 0;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr, 3fr, 3fr;
-  grid-template-rows: 1fr, 3fr, 3fr;
+  grid-template-columns: 1fr 1fr 1fr; /*1fr, 1fr, 1fr 쉼표 넣으면 기능이 안먹어요.*/
+  grid-template-rows: 1fr 3fr 3fr;
   background-color: black;
-  width: 100%;
-  height: 100%;
-  /* gap: 80px; */
+  width: 100vw;
+  height: 100vh;
+  gap: 3px;
   /* align-items: stretch; */
   /* justify-items: center; */
   /* align-content: stretch; */
@@ -32,6 +33,12 @@ body {
 }
 
 .item:nth-child(1) {
+  place-items: center;
+  gap: 0;
   grid-column: 1 / 4;
   grid-row: 1 / 2;
+  background-color: black;
+  color: white;
+  /* border: 3px solid white; */
+  text-align: center;
 }
