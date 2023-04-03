@@ -10,15 +10,11 @@ body {
   /* background-color: black; */
   background: url("CountingStars.jpg");
   align-content: center;
+  background-position: center;
 }
 
 .home_container {
   position: relative;
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center; */
-
   width: 600px;
   height: 300px;
   margin: 50px;
@@ -47,12 +43,12 @@ svg {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  font-family: "Cute Font", cursive;
 }
 
 a {
   font-size: 30px;
   text-decoration-line: none;
+  color: black;
   font-family: "Cute Font", cursive;
 }
 
@@ -76,4 +72,24 @@ a {
   position: absolute;
   right: 3%;
   bottom: 2.2%;
+}
+
+.tech {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 49%;
+}
+
+#use {
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .home_container {
+    width: 100%;
+    height: auto;
+    margin: 20px;
+    border-radius: 0;
+  }
 }

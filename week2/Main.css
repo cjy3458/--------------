@@ -10,6 +10,7 @@ body {
   /* background-color: black; */
   background: url("CountingStars.jpg");
   align-content: center;
+  background-position: center;
 }
 
 .arrow {
@@ -56,10 +57,55 @@ p {
   font-size: 500%;
   color: whitesmoke;
   font-family: "Oleo Script", cursive;
+  margin-bottom: 43%;
 }
 
 .container {
   text-align: center;
   align-items: center;
   width: 60vh;
+}
+
+@media screen and (max-width: 768px) {
+  .top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid white;
+  }
+
+  p {
+    font-size: 15px;
+    color: white;
+    font-family: "Oleo Script", cursive;
+  }
+
+  .title {
+    font-size: 230%;
+    color: whitesmoke;
+    font-family: "Oleo Script", cursive;
+    margin-bottom: 30%;
+  }
+  .arrow {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    animation: pulse 2s infinite;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.2);
+    }
+    5% {
+      transform: scale(0.3);
+    }
+  }
 }
