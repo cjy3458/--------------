@@ -1,4 +1,23 @@
-html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 90vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 50%;
+  height: 30%;
+  background-color: rosybrown;
+  justify-content: center;
+  align-items: center;
+}
+
+/* html,
 body {
   display: flex;
   justify-content: center;
@@ -16,18 +35,20 @@ body {
   width: 90vw;
   height: 90vh;
   align-items: center; /*컬럼일때는 row 방향*/
-  justify-content: space-around; /*컬럼일 때 column방향*/
+/* justify-content: space-around; 컬럼일 때 column방향 */
+/* } */
+
+.basis {
+  flex-basis: 31%;
 }
 
-.nav {
-  flex-basis: 31%;
-  width: 95%;
+/* width: 95%;
   background-color: rgb(157, 77, 59);
   display: flex;
   justify-content: center;
-  align-items: center;
-}
+  align-items: center; */
 
+/*
 .title {
   flex-basis: 100%;
   display: flex;
@@ -38,23 +59,23 @@ body {
 .recent {
   display: flex;
   justify-content: space-between; /*간격을 주는건 컨테이너에 줘야함*/
-  width: 95%;
-  flex-basis: 31%;
-  /* text-align: center; */
-}
+/* width: 95%; */
+/* flex-basis: 31%; */
+/* text-align: center; */
+/* } */
 
-.recen {
-  flex-basis: 23%;
-  background-color: rgba(107, 48, 48, 0.636);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* display: flex;
+/* .recen { */
+/* flex-basis: 23%; */
+/* background-color: rgba(107, 48, 48, 0.636); */
+/* display: flex; */
+/* justify-content: center; */
+/* align-items: center; */
+/* display: flex;
   justify-content: center;
   align-items: center;  -->>>>  중앙 졍렬할 때 변수처럼 사용*/
-}
+/* } */
 
-.popular {
+/* .popular {
   flex-basis: 31%;
   display: flex;
   width: 95%;
@@ -71,7 +92,7 @@ body {
 
 .pop.wide {
   flex-basis: 69%;
-}
+}  */
 
 /* .item {
   text-align: center;
