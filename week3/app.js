@@ -26,8 +26,8 @@ function displayMyChoice(e) {
   /*console.log(clickedBtn); id 자체가 나오고 
   console.log(clickedIcon); 코드 자체가 다 나옴 */
 
-  console.log(myHandText);
-  console.log(myHandIcon);
+  //   console.log(myHandText);
+  //   console.log(myHandIcon);
 
   myHandText.innerText =
     clickedBtn; /*안에 텍스트를 클릭한 버튼에 텍스트로 바꿔주는 함수 innerText */
@@ -37,7 +37,7 @@ function displayMyChoice(e) {
   startGame(clickedBtn);
 }
 
-function getComChoice(e) {
+function getComChoice() {
   const randomArr = {
     0: ["rock", "fa-regular fa-hand-back-fist"],
     1: ["scissors", "fa-regular fa-hand-scissors fa-rotate-90"],
@@ -50,19 +50,17 @@ function getComChoice(e) {
 }
 
 function displayComChoice(result) {
-  computerText.innerText =
-    result[0]; /*randomArr이란 배열에 0번째 인덱스는 텍스트 */
-  computerIcon.className = result[1]; /*1번째 인덱스는 아이콘! */
+  computerText.innerText = result[0];
+  computerIcon.className = result[1];
 }
 
 function startGame(myChoice) {
-  const comChoiceText = getComChoice()[0];
-  const comChoiceIcon = getComChoice()[1];
+  const error = getComChoice();
+  const comChoiceText = error[0];
+  const comChoiceIcon = error[1];
 
-  switch (
-    myChoice[0] +
-    comChoiceText[0][0] /*문자열 제일 앞글자를 비교해서 비교하는 것 같은데 뭔 말인지 하나도 모르겠음  */
-  ) {
+  /*문자열 제일 앞글자를 비교해서 비교하는 것 같은데 뭔 말인지 하나도 모르겠음  */
+  switch (myChoice[0] + comChoiceText[0][0]) {
     case "rs" || "sp" || "pr":
       result.innerText = "WIN";
       break;
@@ -71,8 +69,10 @@ function startGame(myChoice) {
       result.innerText = "TIE";
       break;
 
-    case "rp" || "sr" || "ps":
-      result.innerText = "LOSE";
+    case "rp":
+    case "sr":
+    case "ps":
+      result.innerText = "lose";
       break;
   }
 

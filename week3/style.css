@@ -90,5 +90,5 @@ body {
 }
 
 button {
-  all: unset;
+  all: unset; /*버튼 설정에 있는 디폴트 값이 사라짐*/
 }
