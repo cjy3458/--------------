@@ -61,21 +61,26 @@ function startGame(myChoice) {
 
   /*문자열 제일 앞글자를 비교해서 비교하는 것 같은데 뭔 말인지 하나도 모르겠음  */
   switch (myChoice[0] + comChoiceText[0][0]) {
-    case "rs" || "sp" || "pr":
+    case "rs":
+    case "sp":
+    case "pr":
       result.innerText = "WIN";
       break;
 
-    case "rr" || "ss" || "pp":
+    case "rr":
+    case "ss":
+    case "pp":
       result.innerText = "TIE";
       break;
 
     case "rp":
     case "sr":
     case "ps":
-      result.innerText = "lose";
+      result.innerText = "LOSE";
       break;
   }
 
+  console.log(myChoice[0] + comChoiceText[0][0]);
   displayComChoice([comChoiceText, comChoiceIcon]);
 }
 
