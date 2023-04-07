@@ -13,8 +13,10 @@ const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
 
-let mScore = parseInt(myScore);
-let cScore = parseInt(comScore);
+let mScore = 0;
+let cScore = 0;
+
+console.log(mScore, cScore);
 
 /*각 id들을 변수로 가져와서 선언 */
 
@@ -60,11 +62,11 @@ function displayComChoice(result) {
   computerIcon.className = result[1];
 }
 
-function changeScore() {
-  mScore++;
-  cScore--;
+function changeScore(mScore, cScore) {
+  mScore += 1;
+  cScore -= 1;
   myScore.innerText = mScore;
-  cScore.innerText = cScore;
+  comScore.innerText = cScore;
 }
 
 function startGame(myChoice) {
@@ -78,7 +80,7 @@ function startGame(myChoice) {
     case "sp":
     case "pr":
       result.innerText = "WIN";
-      changeScore();
+      changeScore(mScore, cScore);
       break;
 
     case "rr":
