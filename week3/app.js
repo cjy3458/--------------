@@ -6,9 +6,15 @@ const computerIcon = document.getElementById("computer-hand-icon");
 
 const result = document.getElementById("display-result");
 
+const myScore = document.getElementById("my-score");
+const comScore = document.getElementById("computer-score");
+
 const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
+
+let mScore = parseInt(myScore);
+let cScore = parseInt(comScore);
 
 /*각 id들을 변수로 가져와서 선언 */
 
@@ -54,6 +60,13 @@ function displayComChoice(result) {
   computerIcon.className = result[1];
 }
 
+function changeScore() {
+  mScore++;
+  cScore--;
+  myScore.innerText = mScore;
+  cScore.innerText = cScore;
+}
+
 function startGame(myChoice) {
   const error = getComChoice();
   const comChoiceText = error[0];
@@ -65,6 +78,7 @@ function startGame(myChoice) {
     case "sp":
     case "pr":
       result.innerText = "WIN";
+      changeScore();
       break;
 
     case "rr":
