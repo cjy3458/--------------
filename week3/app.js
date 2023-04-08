@@ -12,23 +12,35 @@ const comScore = document.getElementById("computer-score");
 const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
+const modeBtn = document.getElementById("mode-button");
+
+modeBtn.onclick = modeChange;
 
 let mScore = 0;
 let cScore = 0;
 
 console.log(mScore, cScore);
 
-/*각 id들을 변수로 가져와서 선언 */
+[rockBtn, scissorsBtn, paperBtn].forEach((b) => {
+  b.addEventListener("click", displayMyChoice);
+}); /*배열 안에 각 값을 돌아가면서 호출하는 것 자주 사용하고 편해서 익숙해지면 좋아요*/
 
-// console.log(rockBtn);
+const reset = document.getElementById("reset-button");
 
-// [rockBtn, scissorBtn, paperBtn].forEach((button) => {
-//   button.addEventListener("click", displayMyChoice);
-// });
+reset.onclick = resetGame;
+// reset.addEventListener("click", resetGame);
+function modeChange() {}
 
-rockBtn.addEventListener("click", displayMyChoice);
-scissorsBtn.addEventListener("click", displayMyChoice);
-paperBtn.addEventListener("click", displayMyChoice);
+function resetGame() {
+  myScore.innerText = "0";
+  comScore.innerText = "0";
+  mScore = 0;
+  cScore = 0;
+}
+
+// rockBtn.addEventListener("click", displayMyChoice);
+// scissorsBtn.addEventListener("click", displayMyChoice);
+// paperBtn.addEventListener("click", displayMyChoice);
 
 function displayMyChoice(e) {
   let clickedBtn =
@@ -67,12 +79,13 @@ function displayComChoice(result) {
 }
 
 function changeScore() {
+  /*innerText에서 오류 발생, 이유 모름 */
   if (result.innerText === "WIN") {
-    myScore.innerText = mScore + 1;
-    comScore.innerText = cScore - 1;
+    myScore.innerText = ++mScore;
+    comScore.innerText = --cScore;
   } else if (result.innerText === "LOSE") {
-    myScore.innerText = cScore + 1;
-    comScore.innerText = mScore - 1;
+    comScore.innerText = ++cScore;
+    myScore.innerText = --mScore;
   }
 }
 
@@ -80,7 +93,7 @@ function startGame(myChoice) {
   const error = getComChoice();
   const comChoiceText = error[0];
   const comChoiceIcon = error[1];
-  displayComChoice([comChoiceText, comChoiceIcon]);
+
   /*문자열 제일 앞글자를 비교해서 비교하는 것 같은데 뭔 말인지 하나도 모르겠음  */
   switch (myChoice[0] + comChoiceText[0][0]) {
     case "rs":
@@ -104,6 +117,7 @@ function startGame(myChoice) {
 
   changeScore();
   console.log(myChoice[0] + comChoiceText[0][0]);
+  displayComChoice([comChoiceText, comChoiceIcon]);
 }
 
 // 1. js 파일에서 접근해야하는 html dom 요소들 선언하기

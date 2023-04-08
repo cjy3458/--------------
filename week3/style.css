@@ -92,3 +92,32 @@ body {
 button {
   all: unset; /*버튼 설정에 있는 디폴트 값이 사라짐*/
 }
+
+#mode-button {
+  border: none;
+  position: relative;
+  display: inline-block;
+  font-size: 22px;
+  padding: 20px 60px;
+  color: white;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top 0.01s linear;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  margin-top: 5%;
+  font-size: 20px;
+  background-color: black;
+  box-shadow: 0 0 0 1px black inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 black, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+    0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+#mode-button:active {
+  box-shadow: 0 0 0 1px black inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+#mode-button:hover {
+  background-color: black;
+}
