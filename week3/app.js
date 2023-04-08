@@ -22,6 +22,10 @@ console.log(mScore, cScore);
 
 // console.log(rockBtn);
 
+// [rockBtn, scissorBtn, paperBtn].forEach((button) => {
+//   button.addEventListener("click", displayMyChoice);
+// });
+
 rockBtn.addEventListener("click", displayMyChoice);
 scissorsBtn.addEventListener("click", displayMyChoice);
 paperBtn.addEventListener("click", displayMyChoice);
@@ -62,31 +66,33 @@ function displayComChoice(result) {
   computerIcon.className = result[1];
 }
 
-function changeScore(mScore, cScore) {
-  mScore += 1;
-  cScore -= 1;
-  myScore.innerText = mScore;
-  comScore.innerText = cScore;
+function changeScore() {
+  if (result.innerText === "WIN") {
+    myScore.innerText = mScore + 1;
+    comScore.innerText = cScore - 1;
+  } else if (result.innerText === "LOSE") {
+    myScore.innerText = cScore + 1;
+    comScore.innerText = mScore - 1;
+  }
 }
 
 function startGame(myChoice) {
   const error = getComChoice();
   const comChoiceText = error[0];
   const comChoiceIcon = error[1];
-
+  displayComChoice([comChoiceText, comChoiceIcon]);
   /*문자열 제일 앞글자를 비교해서 비교하는 것 같은데 뭔 말인지 하나도 모르겠음  */
   switch (myChoice[0] + comChoiceText[0][0]) {
     case "rs":
     case "sp":
     case "pr":
-      result.innerText = "WIN";
-      changeScore(mScore, cScore);
+      result.innerText = "WIN"; /*옘병 내가 할 줄을 모르는듯 */
       break;
 
     case "rr":
     case "ss":
     case "pp":
-      result.innerText = "TIE";
+      result.innerText = "DRAW";
       break;
 
     case "rp":
@@ -96,8 +102,8 @@ function startGame(myChoice) {
       break;
   }
 
+  changeScore();
   console.log(myChoice[0] + comChoiceText[0][0]);
-  displayComChoice([comChoiceText, comChoiceIcon]);
 }
 
 // 1. js 파일에서 접근해야하는 html dom 요소들 선언하기
