@@ -12,24 +12,50 @@ const comScore = document.getElementById("computer-score");
 const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
+const resetBtn = document.getElementById("reset-button");
 const modeBtn = document.getElementById("mode-button");
 
-modeBtn.onclick = modeChange;
+modeBtn.onclick = changeMode;
 
 let mScore = 0;
 let cScore = 0;
-
-console.log(mScore, cScore);
 
 [rockBtn, scissorsBtn, paperBtn].forEach((b) => {
   b.addEventListener("click", displayMyChoice);
 }); /*배열 안에 각 값을 돌아가면서 호출하는 것 자주 사용하고 편해서 익숙해지면 좋아요*/
 
-const reset = document.getElementById("reset-button");
-
-reset.onclick = resetGame;
+resetBtn.onclick = resetGame;
 // reset.addEventListener("click", resetGame);
-function modeChange() {}
+
+function changeMode() {
+  let body = document.querySelector("body");
+  let content = document.querySelector("#contents-wrapper");
+  let reset = document.querySelector("#reset-button");
+  let button = document.querySelectorAll(".button");
+  let mode = document.querySelector("#mode-button");
+
+  if (modeBtn.value == "Pink Mode") {
+    body.style.backgroundColor = "pink";
+    body.style.color = "white";
+    content.style.border = "white 4px solid";
+    button.forEach((b) => {
+      b.style.border = "white 4px solid";
+    }); /*앞에서 공부한 forEach */
+    reset.style.backgroundColor = "white";
+    reset.style.color = "pink";
+    modeBtn.value = "Black Mode";
+  } else {
+    body.style.backgroundColor = "white";
+    body.style.color = "black";
+    content.style.border = "black 4px solid";
+    button.forEach((b) => {
+      b.style.border = "black 4px solid";
+    });
+    reset.style.backgroundColor = "black";
+    reset.style.color = "white";
+    modeBtn.value = "Pink Mode";
+  }
+}
 
 function resetGame() {
   myScore.innerText = "0";
@@ -54,10 +80,11 @@ function displayMyChoice(e) {
   //   console.log(myHandIcon);
 
   myHandText.innerText =
-    clickedBtn; /*안에 텍스트를 클릭한 버튼에 텍스트로 바꿔주는 함수 innerText */
+    clickedBtn; /*안에 텍스트를 클릭한 버튼의 텍스트로 바꿔주는 함수 innerText */
   myHandIcon.className =
-    clickedIcon.className; /*class를 클릭한 아이콘에 class로 변경 */
-
+    clickedIcon.className; /*class를 클릭한 아이콘의 class로 변경 */
+  myHandIcon.classList.remove("button");
+  /*button을 클래스로 바꿔줬더니 button클래스가 들어가는 문제 발생 -> button클래스 삭제 */
   startGame(clickedBtn);
 }
 
@@ -79,9 +106,9 @@ function displayComChoice(result) {
 }
 
 function changeScore() {
-  /*innerText에서 오류 발생, 이유 모름 */
   if (result.innerText === "WIN") {
-    myScore.innerText = ++mScore;
+    myScore.innerText =
+      ++mScore; /*++를 변수 앞에다 쓰면 값을 미리 증가시키고 코드 실행 */
     comScore.innerText = --cScore;
   } else if (result.innerText === "LOSE") {
     comScore.innerText = ++cScore;
@@ -116,7 +143,6 @@ function startGame(myChoice) {
   }
 
   changeScore();
-  console.log(myChoice[0] + comChoiceText[0][0]);
   displayComChoice([comChoiceText, comChoiceIcon]);
 }
 
