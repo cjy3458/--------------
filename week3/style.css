@@ -96,7 +96,8 @@ button {
   all: unset; /*버튼 설정에 있는 디폴트 값이 사라짐*/
 }
 
-#mode-button {
+.mode-button {
+  width: 20%;
   border: none;
   position: relative;
   display: inline-block;
@@ -108,48 +109,37 @@ button {
   text-align: center;
   transition: top 0.01s linear;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-  margin-top: 5%;
-  font-size: 20px;
+  margin-top: 3%;
+  font-family: "Delicious Handrawn";
+  font-size: 25px;
   background-color: black;
   box-shadow: 0 0 0 1px black inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
     0 8px 0 0 black, 0 8px 0 1px rgba(0, 0, 0, 0.4),
     0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
-#mode-button:active {
+.mode-button:active {
   box-shadow: 0 0 0 1px black inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
     0 0 0 1px rgba(0, 0, 0, 0.4);
 }
 
-#mode-button:hover {
+.mode-button:hover {
   background-color: black;
 }
 
-.mode-button.pink {
-  border: none;
-  position: relative;
-  display: inline-block;
-  font-size: 22px;
-  padding: 20px 60px;
-  color: white;
-  margin: 20px 10px 10px;
-  border-radius: 6px;
-  text-align: center;
-  transition: top 0.01s linear;
+.pink {
   text-shadow: 0 1px 0 rgb(222, 124, 140);
-  margin-top: 5%;
-  font-size: 20px;
   background-color: rgb(222, 124, 140);
   box-shadow: 0 0 0 1px rgb(222, 124, 140) inset,
     0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 rgb(222, 124, 140),
     0 8px 0 1px rgb(222, 124, 140), 0 8px 8px 1px rgb(222, 124, 140);
 }
 
-.mode-button.pink:active {
+.pink:active {
   box-shadow: 0 0 0 1px rgb(222, 124, 140) inset,
     0 0 0 2px rgb(222, 124, 140) inset, 0 0 0 1px rgb(222, 124, 140);
 }
 
-.mode-button.pink:hover {
+.pink:hover {
   background-color: rgb(222, 124, 140);
 }

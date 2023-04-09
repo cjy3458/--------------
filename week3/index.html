@@ -54,7 +54,13 @@
         </div>
       </section>
     </div>
-    <input id="mode-button" type="button" value="Pink Mode" />
+    <input
+      class="mode-button"
+      type="button"
+      value="Pink Mode"
+      onclick="changeMode()"
+    />
+    <!--getElementsByClassName은 컬렉션 객체를 반환하여 onclick이 안되기 때문에 html에서 onclick 적용-->
   </body>
   <script
     src="https://kit.fontawesome.com/001200a43b.js"
