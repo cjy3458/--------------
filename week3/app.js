@@ -36,25 +36,29 @@ function changeMode() {
     body.style.backgroundColor = "pink";
     body.style.color = "white";
     content.style.border = "white 4px solid";
+    // button.push(content);
     button.forEach((b) => {
       b.style.border = "white 4px solid";
     }); /*앞에서 공부한 forEach */
     reset.style.backgroundColor = "white";
     reset.style.color = "pink";
     modeBtn.value = "Black Mode";
-    modeBtn.classList.add("pink");
+    // modeBtn.classList.add("pink");
   } else {
     body.style.backgroundColor = "white";
     body.style.color = "black";
     content.style.border = "black 4px solid";
+    // button.push(content);
     button.forEach((b) => {
       b.style.border = "black 4px solid";
     });
     reset.style.backgroundColor = "black";
     reset.style.color = "white";
     modeBtn.value = "Pink Mode";
-    modeBtn.classList.remove("pink");
+    // modeBtn.classList.remove("pink");
   }
+  modeBtn.classList.toggle("pink");
+  /* classList.toggle === add와 remove를 on/off 방식으로 class를 처리 */
 }
 
 function resetGame() {
