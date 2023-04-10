@@ -31,12 +31,12 @@ function changeMode() {
   let content = document.querySelector("#contents-wrapper");
   let reset = document.querySelector("#reset-button");
   let button = document.querySelectorAll(".button");
-
+  button = [...button];
   if (modeBtn.value == "Pink Mode") {
     body.style.backgroundColor = "pink";
     body.style.color = "white";
-    content.style.border = "white 4px solid";
-    // button.push(content);
+    // content.style.border = "white 4px solid";
+    button.push(content);
     button.forEach((b) => {
       b.style.border = "white 4px solid";
     }); /*앞에서 공부한 forEach */
@@ -47,8 +47,8 @@ function changeMode() {
   } else {
     body.style.backgroundColor = "white";
     body.style.color = "black";
-    content.style.border = "black 4px solid";
-    // button.push(content);
+    // content.style.border = "black 4px solid";
+    button.push(content);
     button.forEach((b) => {
       b.style.border = "black 4px solid";
     });
