@@ -1,17 +1,26 @@
 const carForm = document.getElementById("car");
 const carInput = document.getElementById("car-names-input");
-const carList = document.getElementById("app");
+const gameResult = document.getElementById("result");
+const gameWinner = document.getElementById("racing-winners");
+
 let newCar = "";
 
 function addCarToList(car, n) {
-  if (car.length == 0) {
-    alert("자동차 이름을 입력하세요.");
-    return;
-  }
-  const new_game = document.createElement("p");
-  new_game.innerText =
-    "********************** [NEW GAME] **********************";
-  carList.appendChild(new_game);
+  const newDiv = document.createElement("div");
+  newDiv.id = "new-div";
+  gameResult.append(document.createElement("br"));
+  gameResult.append(document.createElement("br"));
+  gameResult.appendChild(newDiv);
+
+  // if (car.length == 0) {
+  //   alert("자동차 이름을 입력하세요.");
+  //   return;
+  // }
+  // const new_game = document.createElement("p");
+  // new_game.innerText =
+  //   "********************** [NEW GAME] **********************";
+  // gameResult.appendChild(new_game);
+
   car = car.split(",").map((name) => name.trim());
   let score = [];
   for (let i = 0; i < car.length; i++) {
@@ -26,21 +35,35 @@ function addCarToList(car, n) {
         }
         const makeDiv = document.createElement("div");
         makeDiv.textContent = `${car[j]}: ${score[j]}`;
-        carList.appendChild(makeDiv);
+        newDiv.appendChild(makeDiv);
       }
     }
-    const br = document.createElement("br");
-    carList.appendChild(br);
+    newDiv.appendChild(document.createElement("br"));
   }
 
-  let winner = [];
-  let max_score = Math.max(score.map((s) => s.length));
-  score.forEach((s, idx) => {
-    if (s == max_score) {
-      winner.push(idx);
+  console.log(score);
+
+  let winnerIdx = [];
+  let max_score = Math.max(...score.map((s) => s.length));
+  /*Math.max안에 배열을 넣을때는 꼭 ...을 이용해서 리스트를 풀어줘야 한다! */
+
+  score.forEach((e, idx) => {
+    if (e.length == max_score) {
+      winnerIdx.push(idx);
     }
   });
-  console.log(winner);
+
+  let winner = "";
+
+  winnerIdx.forEach((i, index) => {
+    winner += `${car[i]}`;
+    if (index < winnerIdx.length - 1) {
+      // 마지막 우승자 이름에는 구분자를 붙이지 않는다
+      winner += ", "; //이렇게 하지말고 join을 이용해서 쉼표로 구분해보자!
+    }
+  });
+
+  gameWinner.innerText = winner;
 
   carInput.value = "";
   countInput.value = "";
@@ -56,7 +79,6 @@ const countForm = document.getElementById("count");
 const countBtn = document.getElementById("racing-count-submit");
 
 function countGame() {
-  // const number = countInput.value;
   addCarToList(newCar, countInput.value);
 }
 
