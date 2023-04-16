@@ -22,6 +22,7 @@ function addCarToList(car, n) {
   // gameResult.appendChild(new_game);
 
   car = car.split(",").map((name) => name.trim());
+  //알바하면서 car[i]중에 length가 5이하가 아닐경우 재입력하도록 하기
   let score = [];
   for (let i = 0; i < car.length; i++) {
     score.push("");
@@ -53,15 +54,20 @@ function addCarToList(car, n) {
     }
   });
 
-  let winner = "";
+  // let winner = "";
 
-  winnerIdx.forEach((i, index) => {
-    winner += `${car[i]}`;
-    if (index < winnerIdx.length - 1) {
-      // 마지막 우승자 이름에는 구분자를 붙이지 않는다
-      winner += ", "; //이렇게 하지말고 join을 이용해서 쉼표로 구분해보자!
-    }
+  // winnerIdx.forEach((i, index) => {
+  //   winner += `${car[i]}`;
+  //   if (index < winnerIdx.length - 1) {
+  //     winner += ", "; 이렇게 하지말고 join을 이용해서 쉼표로 구분해보자!
+  //   }
+  // });
+
+  let winner = [];
+  winnerIdx.forEach((i) => {
+    winner.push(car[i]);
   });
+  winner = winner.join(", ");
 
   gameWinner.innerText = winner;
 
