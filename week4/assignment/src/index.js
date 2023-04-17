@@ -5,6 +5,19 @@ const gameWinner = document.getElementById("racing-winners");
 
 let newCar = "";
 
+carForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  newCar = carInput.value;
+  newCar = newCar.split(",").map((name) => name.trim());
+  newCar.forEach((n) => {
+    if (n.length > 5) {
+      alert("5글자 이하로 입력하세요 -_-");
+      carInput.value = "";
+      return;
+    }
+  });
+});
+
 function addCarToList(car, n) {
   const newDiv = document.createElement("div");
   newDiv.id = "new-div";
@@ -21,7 +34,15 @@ function addCarToList(car, n) {
   //   "********************** [NEW GAME] **********************";
   // gameResult.appendChild(new_game);
 
-  car = car.split(",").map((name) => name.trim());
+  // car = car.split(",").map((name) => name.trim());
+
+  // car.forEach((name) => {
+  //   if (name.length > 5) {
+  //     alert("5글자 이하로 입력하세요 -_-");
+  //     return;
+  //   }
+  // });
+
   //알바하면서 car[i]중에 length가 5이하가 아닐경우 재입력하도록 하기
   let score = [];
   for (let i = 0; i < car.length; i++) {
@@ -74,11 +95,6 @@ function addCarToList(car, n) {
   carInput.value = "";
   countInput.value = "";
 }
-
-carForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  newCar = carInput.value;
-});
 
 const countInput = document.getElementById("racing-count-input");
 const countForm = document.getElementById("count");
