@@ -1,10 +1,7 @@
-import { newCar } from "./addCarName.js";
-
 const gameDiv = document.getElementById("result");
 const gameWinner = document.getElementById("racing-winners");
-const countInput = document.getElementById("racing-count-input");
 
-function addCarToList(car, n) {
+export function addCarToList(car, n) {
   const newDiv = document.createElement("div");
   newDiv.id = "new-div";
   gameDiv.append(document.createElement("br"));
@@ -48,9 +45,4 @@ function addCarToList(car, n) {
 
   document.getElementById("car-names-input").value = "";
   document.getElementById("racing-count-input").value = "";
-}
-
-export function countGame(event) {
-  event.preventDefault();
-  addCarToList(newCar, countInput.value);
 }

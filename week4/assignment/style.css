@@ -4,6 +4,8 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(31, 31, 67);
+  /* background-image: url("race.jpeg"); */
+  background-size: cover;
   color: white;
 }
 

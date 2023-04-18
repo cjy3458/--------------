@@ -1,4 +1,4 @@
-import { countGame } from "./addCar.js";
+import { countGame } from "./countGame.js";
 
 const countBtn = document.getElementById("racing-count-submit");
 
