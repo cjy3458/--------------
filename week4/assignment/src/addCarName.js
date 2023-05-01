@@ -20,7 +20,6 @@ carForm.addEventListener("submit", (event) => {
     }
 
     const newCar = new Car(name);
-    console.log(newCar.name);
     carList.push(newCar.name);
   });
 });
