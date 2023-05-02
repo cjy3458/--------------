@@ -12,6 +12,7 @@ export function addCarToList(car, n) {
   for (let i = 0; i < car.length; i++) {
     score.push("");
   }
+  
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < car.length; j++) {
       if (car[j] !== "") {
