@@ -10,13 +10,14 @@ body {
   align-items: center;
 
   font-family: "Gowun Dodum", sans-serif;
+  /* border: 4px dashed #a6ddff; */
 }
 
 button {
   all: unset;
   margin: 10px 0;
 
-  background-color: #333399;
+  background-color: #a6ddff;
   color: white;
 
   padding: 10px;
