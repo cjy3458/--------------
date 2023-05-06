@@ -1,4 +1,4 @@
-const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?numOfRows=5&pageNo=1&MobileOS=ETC&MobileApp=test&arrange=A&_type=json&serviceKey=bYQGsAKI%2Bo82D2RXIxbqqkFsNUYLBEPVhUC2EJPU%2BTyBCPeke9iZNM8K1R8v3ZEqeuGw1An9%2BlDqAQsyzA4sig%3D%3D`;
+const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?numOfRows=5&pageNo=6&MobileOS=ETC&MobileApp=test&arrange=A&_type=json&serviceKey=bYQGsAKI%2Bo82D2RXIxbqqkFsNUYLBEPVhUC2EJPU%2BTyBCPeke9iZNM8K1R8v3ZEqeuGw1An9%2BlDqAQsyzA4sig%3D%3D`;
 
 const container = document.getElementById("container");
 let count = -1;
@@ -62,7 +62,7 @@ function detailData(data) {
   photographer.innerText = `사진작가: ${data.galPhotographer}`; // 수정된 부분
   detailPage.appendChild(photographer);
 
-  // 날짜 추가
+  // 날짜 추가(함수로 바꾸기)
   const date = document.createElement("p");
   const time = data.galCreatedtime;
 
