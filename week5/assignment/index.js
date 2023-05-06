@@ -1,4 +1,3 @@
-/*랜덤 값을 얻는 걸 이용해서 PAGE NO에 계속 다른 값 줘서 매 불러오기 마다 다른 정보들 불러오기  */
 const url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?numOfRows=5&pageNo=1&MobileOS=ETC&MobileApp=test&arrange=A&_type=json&serviceKey=bYQGsAKI%2Bo82D2RXIxbqqkFsNUYLBEPVhUC2EJPU%2BTyBCPeke9iZNM8K1R8v3ZEqeuGw1An9%2BlDqAQsyzA4sig%3D%3D`;
 
 const container = document.getElementById("container");
@@ -43,32 +42,41 @@ async function getData() {
   }
 }
 
-async function detailData(data) {
-  const detailUrl = `https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?galCode=${data.galCode}&MobileOS=ETC&MobileApp=test&_type=json&serviceKey=bYQGsAKI%2Bo82D2RXIxbqqkFsNUYLBEPVhUC2EJPU%2BTyBCPeke9iZNM8K1R8v3ZEqeuGw1An9%2BlDqAQsyzA4sig%3D%3D`;
-
-  const fetchData = await fetch(detailUrl);
-  const toJson = await fetchData.json();
-
+function detailData(data) {
   // 상세 정보를 담을 페이지 생성
   const detailPage = document.createElement("div");
   detailPage.className = "detail-page";
 
-  // 이미지 추가
-
   // 제목 추가
   const title = document.createElement("h2");
-  title.innerText = data.galTitle;
+  title.innerText = `제목: ${data.galTitle}`;
   detailPage.appendChild(title);
 
+  // 키워드 추가
+  const keyWord = document.createElement("p");
+  keyWord.innerText = `검색 키워드: ${data.galSearchKeyword}`;
+  detailPage.appendChild(keyWord);
+
+  // 사진작가 추가
   const photographer = document.createElement("p");
-  photographer.innerText = `Photographer: ${item.galPhotographerName}`;
+  photographer.innerText = `사진작가: ${data.galPhotographer}`; // 수정된 부분
   detailPage.appendChild(photographer);
 
+  // 날짜 추가
   const date = document.createElement("p");
-  const parsedDate = new Date(item.galPhotographyDate);
-  date.innerText = `Date: ${parsedDate.getFullYear()}/${
-    parsedDate.getMonth() + 1
-  }/${parsedDate.getDate()}`;
+  const time = data.galCreatedtime;
+
+  const year = time.slice(0, 4);
+  const month = time.slice(4, 6);
+  const day = time.slice(6, 8);
+  const hour = time.slice(8, 10);
+  const minute = time.slice(10, 12);
+  const second = time.slice(12, 14);
+  const createDate = new Date(
+    `${year}-${month}-${day}T${hour}:${minute}:${second}`
+  ).toLocaleString();
+
+  date.innerText = `날짜: ${createDate}`;
   detailPage.appendChild(date);
 
   // 상세 정보를 담은 페이지를 body에 추가
