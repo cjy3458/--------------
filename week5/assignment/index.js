@@ -47,6 +47,15 @@ function detailData(data) {
   const detailPage = document.createElement("div");
   detailPage.className = "detail-page";
 
+  // x버튼 추가
+  const btn = document.createElement("button");
+  btn.innerText = "X";
+  btn.setAttribute("class", "x-btn");
+  detailPage.appendChild(btn);
+  btn.addEventListener("click", () => {
+    btn.parentNode.remove();
+  });
+
   // 제목 추가
   const title = document.createElement("h2");
   title.innerText = `제목: ${data.galTitle}`;
@@ -66,17 +75,22 @@ function detailData(data) {
   const date = document.createElement("p");
   const time = data.galCreatedtime;
 
-  const year = time.slice(0, 4);
-  const month = time.slice(4, 6);
-  const day = time.slice(6, 8);
-  const hour = time.slice(8, 10);
-  const minute = time.slice(10, 12);
-  const second = time.slice(12, 14);
-  const createDate = new Date(
-    `${year}-${month}-${day}T${hour}:${minute}:${second}`
-  ).toLocaleString();
+  function timeStamp(t) {
+    const year = t.slice(0, 4);
+    const month = t.slice(4, 6);
+    const day = t.slice(6, 8);
+    const hour = t.slice(8, 10);
+    const minute = t.slice(10, 12);
+    const second = t.slice(12, 14);
+    const createDate = new Date(
+      `${year}-${month}-${day}T${hour}:${minute}:${second}`
+    ).toLocaleString();
 
-  date.innerText = `날짜: ${createDate}`;
+    return createDate;
+  }
+
+  date.innerText = `날짜: ${timeStamp(time)}`;
+  console.log(date);
   detailPage.appendChild(date);
 
   // 상세 정보를 담은 페이지를 body에 추가
