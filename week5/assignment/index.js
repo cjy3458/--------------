@@ -56,22 +56,19 @@ function detailData(data) {
     btn.parentNode.remove();
   });
 
-  // 제목 추가
   const title = document.createElement("h2");
   title.innerText = `제목: ${data.galTitle}`;
   detailPage.appendChild(title);
 
-  // 키워드 추가
   const keyWord = document.createElement("p");
   keyWord.innerText = `검색 키워드: ${data.galSearchKeyword}`;
   detailPage.appendChild(keyWord);
 
-  // 사진작가 추가
   const photographer = document.createElement("p");
   photographer.innerText = `사진작가: ${data.galPhotographer}`; // 수정된 부분
   detailPage.appendChild(photographer);
 
-  // 날짜 추가(함수로 바꾸기)
+  // 날짜 파싱
   const date = document.createElement("p");
   const time = data.galCreatedtime;
 
@@ -93,6 +90,5 @@ function detailData(data) {
   console.log(date);
   detailPage.appendChild(date);
 
-  // 상세 정보를 담은 페이지를 body에 추가
   document.body.appendChild(detailPage);
 }
