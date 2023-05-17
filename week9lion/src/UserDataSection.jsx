@@ -1,3 +1,15 @@
+import React from "react";
+import styled from "styled-components";
+import UserCard from "./UserCard";
+
+const UserDataSection = ({ userData }) => {
+  return (
+    <Dom>{userData && userData.map((user, i) => <UserCard user={user} />)}</Dom>
+  );
+};
+
+export default UserDataSection;
+
 const Dom = styled.div`
   display: flex;
   flex-wrap: wrap;

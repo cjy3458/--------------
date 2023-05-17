@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 import FilterButton from "./FilterButton";
+import UserDataSection from "../../UserDataSection";
 
 // rafce를 사용해서 component화를 미리 해줘야함!
 // 버튼의 이름은 props로 내려줄거지만 로직이 버튼마다 다 다르다
 const LionInfoModal = () => {
+  const [userData, setUserData] = useState([]);
+
   const category = [
     {
       type: "page",
@@ -20,7 +23,7 @@ const LionInfoModal = () => {
     },
     {
       type: "stack",
-      title: "hurongt",
+      title: "frontend",
     },
     {
       type: "stack",
@@ -32,7 +35,7 @@ const LionInfoModal = () => {
     },
     {
       type: "stack",
-      title: "PM",
+      title: "pm",
     },
   ];
 
@@ -41,9 +44,15 @@ const LionInfoModal = () => {
       <Title>🦁LikeLion 11th🦁</Title>
       <ButtonDom>
         {category.map((c, i) => (
-          <FilterButton key={i} title={c.title} type={c.type} />
+          <FilterButton
+            setUserData={setUserData}
+            key={i}
+            title={c.title}
+            type={c.type}
+          />
         ))}
       </ButtonDom>
+      <UserDataSection userData={userData} />
     </Dom>
   );
 };

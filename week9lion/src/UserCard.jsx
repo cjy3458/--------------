@@ -1,3 +1,27 @@
+import React from "react";
+import styled from "styled-components";
+
+const UserCard = ({ user }) => {
+  return (
+    <Card>
+      <Row>
+        <div>이름</div>
+        <div>{user.name}</div>
+      </Row>
+      <Row>
+        <div>전공</div>
+        <div>{user.major}</div>
+      </Row>
+      <Row>
+        <div>파트</div>
+        <div>{user.stack}</div>
+      </Row>
+    </Card>
+  );
+};
+
+export default UserCard;
+
 const Card = styled.div`
   display: flex;
   flex-direction: column;
