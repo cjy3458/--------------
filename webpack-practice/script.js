@@ -1,17 +1,17 @@
-// API 호출 예시 (async/await 사용)
+const axios = require("axios");
 
-async function fetchAPI(endpoint) {
-  const response = await fetch(`/api${endpoint}`);
-  const data = await response.json();
-  return data;
-}
-
-// 사용 예시
-async function getData() {
+async function callAPI() {
   try {
-    const result = await fetchAPI("/someEndpoint");
-    // 데이터 처리
+    const response = await axios.get(
+      "http://ll11th-toy-project.p-e.kr:8000/api"
+    );
+    const data = response.data;
+    console.log(data);
+    // API 응답 데이터 처리
   } catch (error) {
+    console.error(error);
     // 오류 처리
   }
 }
+
+callAPI();
