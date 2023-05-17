@@ -1,3 +1,12 @@
+import React from "react";
+import styled from "styled-components";
+
+const FilterButton = () => {
+  return <div>FilterButton</div>;
+};
+
+export default FilterButton;
+
 const Button = styled.div`
   flex-basis: 13%;
   height: 70px;

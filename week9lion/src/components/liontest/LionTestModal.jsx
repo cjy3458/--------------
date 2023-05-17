@@ -1,3 +1,14 @@
+import styled from "styled-components";
+import React from "react";
+
+// rafce를 사용해서 component화를 미리 해줘야함!
+
+const LionTestModal = () => {
+  return <div>LionTestModal</div>;
+};
+
+export default LionTestModal;
+
 const Title = styled.div`
   font-size: 40px;
   color: #535353;

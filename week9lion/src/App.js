@@ -1,29 +1,39 @@
-// import logo from './logo.svg';
-// import './App.css';
+import { useState } from "react";
+import styled from "styled-components";
+import LionInfoModal from "./components/lioninfo/LionInfoModal";
+import LionTestModal from "./components/liontest/LionTestModal";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+function App() {
+  const [modal, setModal] = useState(0);
 
-// export default App;
+  return (
+    <AppDom>
+      <MenuDom>
+        <MenuButton
+          clicked={modal === 0}
+          onClick={() => {
+            setModal(0);
+          }}
+        >
+          아기사자 정보
+        </MenuButton>
+        <MenuButton
+          clicked={modal === 1}
+          onClick={() => {
+            setModal(1);
+          }}
+        >
+          멋사 퀴즈쇼
+        </MenuButton>
+      </MenuDom>
+      <ModalDom>{modal === 0 ? <LionInfoModal /> : <LionTestModal />}</ModalDom>
+    </AppDom>
+  );
+}
 
+export default App;
+
+// AppDom이란 이름의 div태그를 생성해줘!(스타일 컴포넌트(항상 대문자로 시작))
 const AppDom = styled.div`
   display: flex;
   flex-direction: column;
