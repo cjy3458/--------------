@@ -17,13 +17,4 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    before: function (app, server, compiler) {
-      app.use("/api", function (req, res) {
-        const targetURL =
-          "http://ll11th-toy-project.p-e.kr:8000" + req.originalUrl;
-        req.pipe(request(targetURL)).pipe(res);
-      });
-    },
-  },
 };
