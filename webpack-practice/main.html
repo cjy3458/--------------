@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>백엔드와 함께하는 토이프로젝트</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1>방명록</h1>
@@ -16,7 +18,10 @@
       <textarea id="content" name="content" required></textarea>
       <br />
       <button type="submit">작성하기</button>
+      <button onclick="getGuestbookList()">조회하기</button>
+      <button onclick="deleteGuestbook()">삭제하기</button>
+      <div id="guestbookContainer"></div>
+      <script src="./main.js"></script>
     </form>
-    <script src="./main.js" type="module"></script>
   </body>
 </html>

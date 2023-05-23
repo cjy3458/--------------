@@ -1,9 +1,36 @@
-import axios from "./node_modules/axios/dist/esm/axios.min.js";
+const baseUrl = "http://ll11th-toy-project.p-e.kr:8000/";
 
-const baseUrl = "http://ll11th-toy-project.p-e.kr:8000";
+getGuestbookList = () => {
+  const response = axios
+    .get(`${baseUrl}`)
+    .then((response) => {
+      console.log("방명록 리스트 조회 성공:", response.data);
 
-// 방명록 작성
+      const data = response.data.result;
+
+      data.map((datas, i) => {
+        const list = document.createElement("div");
+        list.id = "list";
+
+        const text = document.createElement("span");
+        text.innerText = `
+        작성자: ${datas.writer}
+        내용: ${datas.content}`;
+
+        const guestbookForm = document.getElementById("guestbookForm");
+        guestbookForm.appendChild(list);
+        list.appendChild(text);
+        i++;
+      });
+    })
+
+    .catch((error) => {
+      console.log("방명록 조회 오류:", error);
+    });
+};
+
 const guestbookForm = document.getElementById("guestbookForm");
+
 guestbookForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -21,16 +48,30 @@ guestbookForm.addEventListener("submit", (event) => {
       console.log("방명록 작성 성공:", response.data);
       writerInput.value = "";
       contentInput.value = "";
+      getGuestbookList(); // 작성 후 방명록 리스트 다시 조회
     })
     .catch((error) => {
-      console.error("방명록 작성 오류:", error);
+      console.log("방명록 작성 오류:", error);
     });
 });
+
+// 방명록 삭제
+const deleteGuestbook = (guestbookId) => {
+  axios
+    .delete(`${baseUrl}/${guestbookId}`)
+    .then((response) => {
+      console.log("방명록 삭제 성공:", response.data);
+      getGuestbookList(); // 삭제 후 방명록 리스트 다시 조회
+    })
+    .catch((error) => {
+      console.error("방명록 삭제 오류:", error);
+    });
+};
 
 // 방명록 리스트 조회
 const renderGuestbook = (guestbookList) => {
   const guestbookContainer = document.getElementById("guestbookContainer");
-  guestbookContainer.innerHTML = "";
+  guestbookContainer.innerHTML = ""; // 기존 요소들 초기화
 
   guestbookList.forEach((guestbook) => {
     const guestbookItem = document.createElement("div");
@@ -56,29 +97,5 @@ const renderGuestbook = (guestbookList) => {
   });
 };
 
-const getGuestbookList = () => {
-  axios
-    .get(`${baseUrl}`)
-    .then((response) => {
-      console.log("방명록 리스트 조회 성공:", response.data);
-      renderGuestbook(response.data);
-    })
-    .catch((error) => {
-      console.error("방명록 리스트 조회 오류:", error);
-    });
-};
-
-getGuestbookList();
-
-// 방명록 삭제
-const deleteGuestbook = (guestbookId) => {
-  axios
-    .delete(`${baseUrl}${guestbookId}`)
-    .then((response) => {
-      console.log("방명록 삭제 성공:", response.data);
-      getGuestbookList(); // 삭제 후 방명록 리스트 다시 조회
-    })
-    .catch((error) => {
-      console.error("방명록 삭제 오류:", error);
-    });
-};
+// 초기 방명록 리스트 조회
+// getGuestbookList();
