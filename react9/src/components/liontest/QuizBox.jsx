@@ -11,9 +11,7 @@ const QuizBox = ({ data, handleNextButtonClick }) => {
   const handleSubmit = () => {
     const answer = {
       id: data.id,
-      selectedAnswer: selectedAnswer,
-      correct: selectedAnswer === data.correctAnswer,
-      title: data.title,
+      answer: selectedAnswer,
     };
     handleNextButtonClick(answer);
   };
@@ -21,27 +19,25 @@ const QuizBox = ({ data, handleNextButtonClick }) => {
   const isLastQuestion = data.id === data.length;
 
   return (
-    <>
-      <QuestionSection>
-        {data.title}
-        <AnswerSection>
-          {data.answerList.map((answer) => (
-            <Answer
-              key={answer.aid}
-              onClick={() => handleAnswerSelect(answer.aid)}
-              isSelected={selectedAnswer === answer.aid}
-            >
-              {answer.content}
-            </Answer>
-          ))}
-        </AnswerSection>
-        {selectedAnswer !== null && (
-          <Button onClick={handleSubmit}>
-            {isLastQuestion ? "결과 보기" : "다음"}
-          </Button>
-        )}
-      </QuestionSection>
-    </>
+    <QuestionSection>
+      {data.title}
+      <AnswerSection>
+        {data.answerList.map((answer) => (
+          <Answer
+            key={answer.aid}
+            onClick={() => handleAnswerSelect(answer.aid)}
+            isSelected={selectedAnswer === answer.aid}
+          >
+            {answer.content}
+          </Answer>
+        ))}
+      </AnswerSection>
+      {selectedAnswer !== null && (
+        <Button onClick={handleSubmit}>
+          {isLastQuestion ? "결과 보기" : "다음"}
+        </Button>
+      )}
+    </QuestionSection>
   );
 };
 

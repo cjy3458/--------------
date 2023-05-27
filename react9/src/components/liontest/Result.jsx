@@ -5,13 +5,15 @@ const Result = ({ correctAnswers, incorrectAnswers }) => {
   return (
     <Dom>
       <ContentBox>
-        <Total>총 맞은 개수: {correctAnswers}</Total>
+        <Total>총 맞은 개수: {correctAnswers}/9</Total>
         <Incorrect>
           <Title>틀린 문제</Title>
           {incorrectAnswers.map((item, index) => (
             <Question key={index}>
               <Title>{item.title}</Title>
-              <Answer>정답: {item.answer}</Answer>
+              <Answer>
+                정답: {item.correctAnswer}, 선택한 답: {item.selectedAnswer}
+              </Answer>
             </Question>
           ))}
         </Incorrect>

@@ -7,68 +7,48 @@ import Result from "./Result";
 const LionTestModal = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
+  const [showResultButton, setShowResultButton] = useState(false);
+  const [showResult, setShowResult] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [showResult, setShowResult] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getLionTest();
+      setData(response.data.data);
+    };
+
+    fetchData();
+  }, []);
 
   const handleNextButtonClick = (answer) => {
-    setSelectedAnswers((prevSelectedAnswers) => [
-      ...prevSelectedAnswers,
-      answer,
-    ]);
-
     if (page === data.length) {
+      setShowResultButton(true);
       setShowResult(true);
+      const correctCount = data.filter(
+        (question) => question.correctAnswer === answer.answer
+      ).length;
+      const incorrectList = data.filter(
+        (question) => question.correctAnswer !== answer.answer
+      );
+      setCorrectAnswers(correctCount);
+      setIncorrectAnswers(incorrectList);
     } else {
-      setPage(page + 1);
+      setPage((prevPage) => prevPage + 1);
     }
   };
 
-  const handleTestComplete = async () => {
-    // Prepare the answer payload
-    const answerPayload = selectedAnswers.map((selectedAnswer, index) => ({
-      id: data[index].id,
-      answer: selectedAnswer.selectedAnswer,
-    }));
-
-    // Send test result to the server
-    const response = await testResult({ answer: answerPayload });
-
-    // Display the test result
-    if (response.data.message === "success") {
-      const { result, incorrect } = response.data.data;
-      setCorrectAnswers(result);
-      setIncorrectAnswers(incorrect);
-    }
-
+  const handleResultButtonClick = () => {
     setShowResult(true);
   };
-
-  const handleStartTest = async () => {
-    // Fetch lion test data from the server
-    const response = await getLionTest();
-    if (response.data.message === "success") {
-      const lionTestData = response.data.data;
-      setData(lionTestData);
-      setPage(1); // Start from the first question
-      setSelectedAnswers([]); // Reset selected answers
-      setCorrectAnswers(0); // Reset correct answers count
-      setIncorrectAnswers([]); // Reset incorrect answers
-      setShowResult(false); // Hide result
-    }
-  };
-
-  console.log(data.length);
-  console.log(page);
 
   return (
     <Dom>
       <Title>🐝멋사인 테스트🐝</Title>
       <ContentBox>
         {page === 0 ? (
-          <Button onClick={handleStartTest}>시작하기</Button>
-        ) : page !== data.length ? (
+          <Button onClick={handleNextButtonClick}>시작하기</Button>
+        ) : page <= data.length ? (
           <QuizBox
             data={data[page - 1]}
             handleNextButtonClick={handleNextButtonClick}
@@ -81,7 +61,12 @@ const LionTestModal = () => {
                 incorrectAnswers={incorrectAnswers}
               />
             ) : (
-              <Button onClick={handleTestComplete}>결과 보기</Button>
+              <>
+                <Title>테스트가 종료되었습니다.</Title>
+                {showResultButton && (
+                  <Button onClick={handleResultButtonClick}>결과 보기</Button>
+                )}
+              </>
             )}
           </>
         )}
