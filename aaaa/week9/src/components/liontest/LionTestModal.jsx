@@ -1,118 +1,89 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { getLionTest, testResult } from "../../apis/liontest";
+import { getTest, getResult } from "../../apis/liontest";
 import QuizBox from "./Quizbox";
 import Result from "./Result";
 
 const LionTestModal = () => {
-  const [start, setStart] = useState(false);
-  const [question, setQuestion] = useState({});
-  const [resultAnswer, setResultAnswer] = useState([]);
-  const [finalResult, setFinalResult] = useState({});
+  const [firstPage, setFirstPage] = useState(false);
+  const [testData, setTestData] = useState({});
+  const [answerData, setAnswerData] = useState([]);
+  const [resultData, setResultData] = useState({});
 
   const getData = async (id) => {
-    const data = await getLionTest();
-    const question = data.data.data;
-    if (!question[id]) {
-      setStart(false);
-    } else {
-      setQuestion(question[id]);
-      setStart(true);
+    try {
+      const response = await getTest();
+      const data = response.data.data;
+      const datas = data[id];
+
+      if (datas) {
+        setTestData(datas);
+        setFirstPage(true);
+      } else {
+        setFirstPage(false);
+      }
+    } catch (error) {
+      console.error("에러 발생", error);
     }
   };
 
-  const handleClickQuestion = (id) => {
-    setQuestion({
-      ...question,
-      answerList: question.answerList.map((data) =>
-        data.aid === id
-          ? {
-              ...data,
-              clicked: true,
-            }
-          : {
-              ...data,
-              clicked: false,
-            }
-      ),
-    });
+  const clickQuestion = (id) => {
+    setTestData((answer) => ({
+      ...answer,
+      answerList: answer.answerList.map((data) => ({
+        ...data,
+        clicked: data.aid === id,
+      })),
+    }));
   };
 
-  const StartBtn = ({ getData }) => {
-    return (
-      <ContentBox>
-        <Button onClick={() => getData(0)}>시작하기</Button>
-      </ContentBox>
-    );
+  const handleResult = async () => {
+    const response = await getResult(answerData);
+    const data = response.data.data;
+    setResultData(data);
   };
 
-  const handleResultAnswer = (nowAnswer) => {
-    setResultAnswer([...resultAnswer, nowAnswer]);
-  };
-
-  // result : 맞은 개수 / incorrect:Array[]; incorrect.title: 틀린문제제목, incorrect.answer:틀린문제답
-  const handleClickGetResult = async () => {
-    const response = await testResult(resultAnswer);
-    const resultData = response.data.data;
-    setFinalResult(resultData);
+  const myAnswer = (answer) => {
+    setAnswerData((prevAnswers) => [...prevAnswers, answer]);
   };
 
   return (
-    <>
-      <Dom>
-        <Title>🐝멋사 테스트🐝</Title>
-        {start ? (
-          <QuizBox
-            question={question}
-            getData={getData}
-            handleResultAnswer={handleResultAnswer}
-            handleClickQuestion={handleClickQuestion}
-          />
-        ) : resultAnswer.length > 0 ? (
-          <Result
-            handleClickGetResult={handleClickGetResult}
-            finalResult={finalResult}
-          />
-        ) : (
-          <StartBtn getData={(id) => getData(id)} />
-        )}
-      </Dom>
-    </>
+    <Dom>
+      <Title>🐝멋사 테스트🐝</Title>
+      {firstPage ? (
+        <QuizBox
+          testData={testData}
+          getData={getData}
+          myAnswer={myAnswer}
+          clickQuestion={clickQuestion}
+        />
+      ) : answerData.length > 0 ? (
+        <Result handleResult={handleResult} resultData={resultData} />
+      ) : (
+        <ContentBox>
+          <Button onClick={() => getData(0)}>시작하기</Button>
+        </ContentBox>
+      )}
+    </Dom>
   );
 };
-
-export default LionTestModal;
-
-const Title = styled.div`
-  font-size: 40px;
-  color: #535353;
-  font-weight: 700;
-`;
 
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 90%;
+  height: 80%;
 `;
 
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 100px;
-  font-size: 25px;
-  color: gray;
-  background-color: beige;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
+const Title = styled.div`
+  font-size: 35px;
+  color: white;
+  font-weight: 700;
 `;
 
 const Dom = styled.div`
   gap: 30px;
-  background-color: #ffd9b6;
+  background-color: rgb(139, 114, 176);
   width: 90vw;
   align-items: center;
   display: flex;
@@ -122,3 +93,24 @@ const Dom = styled.div`
   border-radius: 20px;
   box-shadow: 5px 5px 5px lightgray;
 `;
+
+const Button = styled.div`
+  &:hover {
+    background-color: rgb(149, 101, 220);
+    color: white;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  font-size: 25px;
+  color: grey;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid white;
+  cursor: pointer;
+  font-weight: 500;
+`;
+
+export default LionTestModal;

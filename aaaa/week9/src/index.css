@@ -6,7 +6,8 @@ html {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: beige;
+  background-color: rgb(218, 204, 217);
+  color: rgb(193, 169, 229);
 }
 
 code {

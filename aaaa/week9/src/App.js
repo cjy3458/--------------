@@ -36,8 +36,9 @@ const MenuButton = styled.div`
   width: 200px;
   height: 100px;
   border-radius: 20px;
-  background-color: ${(props) => (props.clicked ? "orange" : "gray")};
-  color: white;
+  background-color: ${(props) =>
+    props.clicked ? "rgb(149, 101, 220)" : "white"};
+  color: ${(props) => (props.clicked ? "white" : "grey")};
   font-size: 25px;
   font-weight: 700;
   justify-content: center;

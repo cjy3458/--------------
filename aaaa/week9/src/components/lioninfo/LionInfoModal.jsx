@@ -7,15 +7,9 @@ import Pagination from "./pagination";
 
 const LionInfoModal = () => {
   const [userData, setUserData] = useState([]);
-  const [pageNum, setPageNum] = useState([
-    { id: 1, clicked: false },
-    { id: 2, clicked: false },
-    { id: 3, clicked: false },
-    { id: 4, clicked: false },
-    { id: 5, clicked: false },
-    { id: 6, clicked: false },
-    { id: 7, clicked: false },
-  ]);
+  const [pageNum, setPageNum] = useState(
+    Array.from({ length: 7 }, (_, index) => ({ id: index + 1, clicked: false }))
+  );
 
   const [page, setPage] = useState(false);
 
@@ -63,7 +57,7 @@ const LionInfoModal = () => {
 
   return (
     <Dom>
-      <Title>🦁 LikeLion 11th 🦁</Title>
+      <Title>😈 11기 아기사자들 😈</Title>
       <ButtonDom>
         {category.map((c, i) => (
           <FilterButton
@@ -93,7 +87,7 @@ export default LionInfoModal;
 
 const Title = styled.div`
   font-size: 40px;
-  color: #535353;
+  color: white;
   font-weight: 700;
 `;
 
@@ -105,7 +99,7 @@ const ButtonDom = styled.div`
 
 const Dom = styled.div`
   gap: 30px;
-  background-color: #ffd9b6;
+  background-color: rgb(139, 114, 176);
   width: 90vw;
   align-items: center;
   display: flex;

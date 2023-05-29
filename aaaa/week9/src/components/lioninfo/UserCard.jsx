@@ -25,7 +25,7 @@ export default UserCard;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #ffd9d9;
+  background-color: whitesmoke;
   width: 200px;
   height: 130px;
   justify-content: center;
