@@ -1,22 +1,25 @@
-import { useState } from "react";
 import styled from "styled-components";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LionInfoModal from "./components/lioninfo/LionInfoModal";
 import LionTestModal from "./components/liontest/LionTestModal";
 
 function App() {
-  const [modal, setModal] = useState(0);
-
   return (
     <AppDom>
       <MenuDom>
-        <MenuButton clicked={modal === 0} onClick={() => setModal(0)}>
-          아기사자 정보
-        </MenuButton>
-        <MenuButton clicked={modal === 1} onClick={() => setModal(1)}>
-          멋사인 테스트
-        </MenuButton>
+        <Link to="/lioninfo">
+          <MenuButton>아기사자 정보</MenuButton>
+        </Link>
+        <Link to="/liontest">
+          <MenuButton to="/liontest">멋사인 테스트</MenuButton>
+        </Link>
       </MenuDom>
-      <ModalDom>{modal === 0 ? <LionInfoModal /> : <LionTestModal />}</ModalDom>
+      <ModalDom>
+        <Routes>
+          <Route path="/lioninfo" element={<LionInfoModal />} />
+          <Route path="/liontest" element={<LionTestModal />} />
+        </Routes>
+      </ModalDom>
     </AppDom>
   );
 }
