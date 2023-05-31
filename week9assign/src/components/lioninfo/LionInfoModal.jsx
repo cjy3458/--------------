@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
 import FilterButton from "./FilterButton";
 import UserDataSection from "./UserDataSection";
 import { getAllPage } from "../../apis/lioninfo";
@@ -9,14 +8,10 @@ import Pagination from "./pagination";
 const LionInfoModal = () => {
   const [userData, setUserData] = useState([]);
   const [pageNum, setPageNum] = useState(
-    Array.from({ length: 7 }, (_, index) => ({
-      id: index + 1,
-      clicked: false,
-    }))
+    Array.from({ length: 7 }, (_, index) => ({ id: index + 1, clicked: false }))
   );
+
   const [page, setPage] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const category = [
     {
@@ -53,15 +48,7 @@ const LionInfoModal = () => {
     const datas = await getAllPage();
     const userData = datas.data.data.slice((id - 1) * 4, id * 4);
     setUserData(userData);
-    setPageNum(
-      pageNum.map((i) =>
-        i.id === id ? { ...i, clicked: true } : { ...i, clicked: false }
-      )
-    );
-
-    const searchParams = new URLSearchParams(location.search);
-    searchParams.set("page", id);
-    navigate(`?${searchParams.toString()}`);
+    setPageNum(pageNum.map((data) => ({ ...data, clicked: data.id === id })));
   };
 
   return (
