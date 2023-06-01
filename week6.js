@@ -11,8 +11,8 @@ const person = {
   name: "이름",
 };
 
-console.log(angel.name2[0]);
-angel.sayHello();
+console.log(angel.name[0]);
+// angel.sayHello();
 
 console.log(angel.name);
 console.log(angel["age"]);
@@ -92,3 +92,16 @@ class 대학생 extends 스튜던트 {
 const 현엽이 = new 대학생("현엽이", 25, "산업보안", "5병");
 console.log(현엽이.소개);
 console.log(현엽이);
+
+const btn = document.getElementById("btn");
+const container = document.getElementById("container");
+const input = document.getElementById("input");
+
+function createDiv() {
+  const makeDiv = document.createElement("div");
+  makeDiv.innerText = input.value;
+  container.appendChild(makeDiv);
+  input.value = "";
+}
+
+btn.addEventListener("click", createDiv);
