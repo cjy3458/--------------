@@ -65,23 +65,29 @@ for (let i = 0; i < 100; i++) {
   학생들.push(new 학생(`${i + 1}번 학생`, 17));
 }
 
-class 학생 {
+class 스튜던트 {
   constructor(n, a, m) {
     this.이름 = n;
     this.나이 = a;
     this.학과 = m;
   }
+  get 소개() {
+    return `내 이름은 ${this.이름}! ${this.나이}살이야!`;
+  }
 }
 
-class 고등학생 extends 학생 {
+class 고등학생 extends 스튜던트 {
   constructor(n, a, m) {
     super(n, a, m);
   }
 }
 
-class 대학생 extends 학생 {
+class 대학생 extends 스튜던트 {
   constructor(n, a, m, alchol) {
     super(n, a, m);
     this.alchol = alchol;
   }
 }
+
+const 현엽이 = new 대학생("현엽이", 25, "산업보안");
+console.log(현엽이.소개);
