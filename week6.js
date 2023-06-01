@@ -89,5 +89,6 @@ class 대학생 extends 스튜던트 {
   }
 }
 
-const 현엽이 = new 대학생("현엽이", 25, "산업보안");
+const 현엽이 = new 대학생("현엽이", 25, "산업보안", "5병");
 console.log(현엽이.소개);
+console.log(현엽이);
