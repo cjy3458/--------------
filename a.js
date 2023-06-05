@@ -90,3 +90,38 @@ jay();
 
 console.log(global);
 console.log(local); // 지역 스코프라 지역 밖에서는 유효하지 않음
+
+function add() {
+  var x = 1;
+  var x = 2;
+
+  console.log(x);
+}
+
+function add() {
+  let x = 1;
+  let x = 2;
+
+  console.log(x);
+}
+
+var x = 1;
+
+if (ture) {
+  var x = 10;
+}
+
+console.log(x);
+
+var a = 1;
+
+function jay() {
+  var a = 10;
+  young();
+}
+
+function young() {
+  console.log(a);
+}
+
+let choijaeyoung = 24;
