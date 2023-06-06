@@ -92,28 +92,18 @@
 // console.log(현엽이.소개);
 // console.log(현엽이);
 
-// const btn = document.getElementById("btn");
-// const container = document.getElementById("container");
-// const input = document.getElementById("input");
+const btn = document.getElementById("btn");
+const container = document.getElementById("container");
+const input = document.getElementById("input");
 
-// function createDiv() {
-//   const makeLi = document.createElement("li");
-//   makeLi.innerText = input.value;
-//   container.appendChild(makeLi);
-//   input.value = "";
-// }
-
-// btn.addEventListener("click", createDiv);
-
-let a = 1;
-
-{
-  let a = 2;
-  let b = 3;
-
-  console.log(a);
-  console.log(b);
+function createDiv() {
+  const makeLi = document.createElement("li");
+  makeLi.innerText = input.value;
+  container.appendChild(makeLi);
+  input.value = "";
 }
+
+btn.addEventListener("click", createDiv);
 
 console.log(jay);
 let jay;
@@ -121,4 +111,4 @@ let jay;
 console.log(jay);
 jay = 12;
 
-const a;
+console.log(jay);
