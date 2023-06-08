@@ -98,7 +98,9 @@ const input = document.getElementById("input");
 
 function createDiv() {
   const makeLi = document.createElement("li");
+  const makeDel = document.createElement("button");
   makeLi.innerText = input.value;
+  makeDel.innerText = "X";
   container.appendChild(makeLi);
   input.value = "";
 }
