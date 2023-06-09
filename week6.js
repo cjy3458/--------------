@@ -97,11 +97,16 @@ const container = document.getElementById("container");
 const input = document.getElementById("input");
 
 function createDiv() {
+  const makeDiv = document.createElement("div");
   const makeLi = document.createElement("li");
   const makeDel = document.createElement("button");
+  makeDiv.id = "container4";
   makeLi.innerText = input.value;
   makeDel.innerText = "X";
-  container.appendChild(makeLi);
+  makeDiv.appendChild(makeLi);
+  makeDiv.appendChild(makeDel);
+  container.appendChild(makeDiv);
+
   input.value = "";
 }
 
