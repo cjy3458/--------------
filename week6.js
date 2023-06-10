@@ -98,16 +98,27 @@ const input = document.getElementById("input");
 
 function createDiv() {
   const makeDiv = document.createElement("div");
-  const makeLi = document.createElement("li");
-  const makeDel = document.createElement("button");
+  let makeLi = document.createElement("li");
+  let makeDel = document.createElement("button");
   makeDiv.id = "container4";
   makeLi.innerText = input.value;
+  makeLi.id = "lili";
   makeDel.innerText = "X";
+  makeDel.id = "delBtn";
   makeDiv.appendChild(makeLi);
   makeDiv.appendChild(makeDel);
   container.appendChild(makeDiv);
+  const delBtn = document.getElementById("delBtn");
+
+  delBtn.addEventListener("click", delDiv);
 
   input.value = "";
+}
+
+function delDiv(e) {
+  //삭제 버튼(x) 클릭시
+  let del = e.target.parentElement; //선택한 목록 한개만 지우기(부모 객체를 지운다)
+  del.remove();
 }
 
 btn.addEventListener("click", createDiv);
