@@ -95,6 +95,7 @@
 const btn = document.getElementById("btn");
 const container = document.getElementById("container");
 const input = document.getElementById("input");
+const delBtn = document.getElementById("delBtn");
 
 function createDiv() {
   const makeDiv = document.createElement("div");
