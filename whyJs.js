@@ -15,13 +15,17 @@ function showModal() {
 
   const modalText = document.createElement("p");
   modalText.textContent = "Really?";
+  modalText.className = "modalTitle";
 
   const modalCancle = document.createElement("button");
   modalCancle.textContent = "Cancel";
-  modalCancle.className = "btn-alt";
+  modalCancle.className = "btn btn--alt";
   modalCancle.addEventListener("click", closeModal);
+
   const modalConfirm = document.createElement("button");
   modalConfirm.textContent = "confirm";
+  modalConfirm.className = "btn";
+  modalConfirm.addEventListener("click", closeModal);
 
   modal.append(modalText);
   modal.append(modalCancle);
