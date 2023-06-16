@@ -48,3 +48,34 @@ function closeModal() {
   backdrop.remove();
   backdrop = null;
 }
+
+const printName = (n) => {
+  console.log(n);
+};
+
+printName("Jay");
+
+class Human {
+  constructor() {
+    this.gender = "male";
+  }
+
+  printGender() {
+    console.log(this.gender);
+  }
+}
+class Person extends Human {
+  constructor() {
+    super();
+    this.name = "Jay"; // 프로퍼티
+    this.gender = "Female";
+  }
+  call = () => {
+    console.log(`${this.name}이에요!`);
+  }; // 메소드
+}
+
+const myPerson = new Person();
+
+myPerson.call();
+myPerson.printGender();
