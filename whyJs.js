@@ -56,20 +56,18 @@ const printName = (n) => {
 printName("Jay");
 
 class Human {
-  constructor() {
-    this.gender = "male";
-  }
+  // 클래스
+  gender = "male";
 
   printGender() {
     console.log(this.gender);
   }
 }
 class Person extends Human {
-  constructor() {
-    super();
-    this.name = "Jay"; // 프로퍼티
-    this.gender = "Female";
-  }
+  // extends를 이용해 상속받아 만든 클래스
+  name = "Jay"; // 프로퍼티
+  gender = "Female";
+
   call = () => {
     console.log(`${this.name}이에요!`);
   }; // 메소드
@@ -79,3 +77,25 @@ const myPerson = new Person();
 
 myPerson.call();
 myPerson.printGender();
+
+const num = [1, 2, 3];
+const oldNum = [...num, 4, 5]; // spread
+
+console.log(oldNum[3]);
+
+const sortArray = (...arr) => {
+  console.log(arr);
+};
+
+sortArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+const me = {
+  name: "jaeyoung",
+};
+
+const newMe = {
+  ...me,
+  age: 25,
+};
+
+console.log(newMe.name, newMe.age);
