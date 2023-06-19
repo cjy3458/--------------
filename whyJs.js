@@ -99,3 +99,13 @@ const newMe = {
 };
 
 console.log(newMe.name, newMe.age);
+
+const people = {
+  name: "Sam",
+  name2: "Tom",
+};
+
+const secondPeople = { ...people };
+people.name = "JaeYoung";
+
+console.log(secondPeople);
