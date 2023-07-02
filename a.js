@@ -125,3 +125,5 @@ function young() {
 }
 
 let choijaeyoung = 24;
+
+function(){num=aux(num);return num;}
