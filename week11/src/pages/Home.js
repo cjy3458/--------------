@@ -1,22 +1,25 @@
 import React, { useState } from "react";
-import { Wrapper } from "../components/Common";
+import { Wrapper, Title, Input, Inputs, Form } from "../components/Common";
 import { styled } from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../apis/login";
 
 const Home = () => {
-  const { id, setId } = useState("");
+  const [id, setId] = useState("");
+  const router = useNavigate(); // 라우터를 통해서 다른 페이지로 돌아가는 코드
   const onChangeId = (e) => {
     setId(e.target.value);
   };
-  const { pw, setPw } = useState("");
+
+  const [pw, setPw] = useState("");
   const onCahngePw = (e) => {
     setPw(e.target.value);
   };
 
-  const router = useNavigate();
-
   const onClick = async () => {
     //로그인 api를 넣어주기
     const result = await login(id, pw); // state들을 넘겨주기
+    console.log(result);
     const { accessToken, refreshToken } = result;
     localStorage.setItem("access", accessToken);
     localStorage.setItem("refresh", refreshToken);
@@ -35,7 +38,7 @@ const Home = () => {
             onChange={onCahngePw}
           ></Input>
         </Inputs>
-        <Button>LogIn</Button>
+        <Button onClick={onClick}>LogIn</Button>
       </Form>
       <CustomLink to="/signup">회원가입</CustomLink>
     </Wrapper>

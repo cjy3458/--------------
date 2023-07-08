@@ -1,5 +1,8 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Mypage from "./pages/Mypage";
 
 //Home , Signup, Mypage
 
