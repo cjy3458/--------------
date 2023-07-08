@@ -12,9 +12,15 @@ const Home = () => {
     setPw(e.target.value);
   };
 
+  const router = useNavigate();
+
   const onClick = async () => {
     //로그인 api를 넣어주기
-    const result = await login(id, pw);
+    const result = await login(id, pw); // state들을 넘겨주기
+    const { accessToken, refreshToken } = result;
+    localStorage.setItem("access", accessToken);
+    localStorage.setItem("refresh", refreshToken);
+    router("/mypage");
   };
   return (
     <Wrapper>
