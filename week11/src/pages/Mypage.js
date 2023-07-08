@@ -1,9 +1,11 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { getMyPage } from "../apis/mypage";
 
 const Mypage = () => {
   useEffect(() => {
-    //mypage 정보
+    getMyPage().then((a) => {
+      console.log(a);
+    });
   }, []);
   return <div>Mypage</div>;
 };
