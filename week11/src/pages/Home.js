@@ -3,19 +3,13 @@ import { Wrapper, Title, Input, Inputs, Form } from "../components/Common";
 import { styled } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../apis/login";
+import { useForm } from "../hooks/useForm";
 
 const Home = () => {
-  const [id, setId] = useState("");
+  const [id, onChangeId] = useForm();
+  const [pw, onChangePw] = useForm();
+
   const router = useNavigate(); // 라우터를 통해서 다른 페이지로 돌아가는 코드
-  const onChangeId = (e) => {
-    setId(e.target.value);
-  };
-
-  const [pw, setPw] = useState("");
-  const onCahngePw = (e) => {
-    setPw(e.target.value);
-  };
-
   const onClick = async () => {
     //로그인 api를 넣어주기
     const result = await login(id, pw); // state들을 넘겨주기
@@ -35,7 +29,7 @@ const Home = () => {
             placeholder="PW입력"
             type="password"
             value={pw}
-            onChange={onCahngePw}
+            onChange={onChangePw}
           ></Input>
         </Inputs>
         <Button onClick={onClick}>LogIn</Button>
