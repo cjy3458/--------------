@@ -5,7 +5,39 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   flex-direction: column;
+  border: 3px solid black;
+  border-radius: 3%;
+  padding: 30px;
 `;
+
+export const Wrapper2 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  border: 3px solid black;
+  padding: 30px;
+  border-radius: 3%;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
+export const Wrapper3 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  border: 3px solid black;
+  padding: 30px;
+  border-radius: 3%;
+  font-size: 20px;
+  width: 300px;
+`;
+
+export const Information = styled.div`
+  font-size: 25px;
+`;
+
 export const Inputs = styled.div`
   display: flex;
   align-items: center;
