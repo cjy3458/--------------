@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getNewRefresh = async () => {
+export const getNewRefreshToken = async () => {
   const accessToken = localStorage.getItem("access");
   const refreshToken = localStorage.getItem("refresh");
 
