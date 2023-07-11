@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Wrapper, Title, Input, Inputs, Form } from "../components/Common";
 import { styled } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,14 +10,19 @@ const Home = () => {
   const [pw, onChangePw] = useForm();
 
   const router = useNavigate(); // 라우터를 통해서 다른 페이지로 돌아가는 코드
+
   const onClick = async () => {
-    //로그인 api를 넣어주기
-    const result = await login(id, pw); // state들을 넘겨주기
-    console.log(result);
-    const { accessToken, refreshToken } = result;
-    localStorage.setItem("access", accessToken);
-    localStorage.setItem("refresh", refreshToken);
-    router("/mypage");
+    try {
+      //로그인 api를 넣어주기
+      const result = await login(id, pw); // state들을 넘겨주기
+      console.log(result);
+      const { accessToken, refreshToken } = result;
+      localStorage.setItem("access", accessToken);
+      localStorage.setItem("refresh", refreshToken);
+      router("/mypage");
+    } catch (error) {
+      alert("아이디나 패스워드를 확인하세요");
+    }
   };
   return (
     <Wrapper>
