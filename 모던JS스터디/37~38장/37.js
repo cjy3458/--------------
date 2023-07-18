@@ -25,7 +25,7 @@ console.log(set3); // {1, 2, 3, 6, 7, 8};
 
 set3.delete(6); // 6 삭제
 set3.delete(17528); // 존재하지 않는 요소를 삭제해도 에러 발생 X
-set3.delete(1).delete(2);
+// set3.delete(1).delete(2);
 // add는 추가한 새 객체를 반환하기 때문에 연속 사용이 가능
 // delete는 삭제 성공 여부를 boolean으로 반환하기 때문에 연속 사용이 불가능
 console.log(set3); // {1, 2, 3, 7, 8};
@@ -34,3 +34,9 @@ console.log(set3.size);
 
 set3.size = 25; // 무시, 변경 불가
 console.log(set3.size); // 3
+
+const set4 = new Set([1, 2, 3]);
+
+console.log([...set4]); // [1, 2, 3] 출력
+
+set4.forEach((v) => console.log(v)); // 1,2,3 출력
