@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Inputs, Input, Wrapp, Wrapper2 } from "../components/Common";
+import { Title, Inputs, Input, Wrapper2 } from "../components/Common";
 import { useForm } from "../hooks/useForm";
 import { styled } from "styled-components";
 import { signUp } from "../apis/signUp";
