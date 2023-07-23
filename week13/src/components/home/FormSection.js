@@ -16,13 +16,13 @@ const FormSection = () => {
   const navigate = useNavigate();
 
   const isSubmited = useSetRecoilState(isSubmitedAtom);
-  const [email, onChangeEmail] = useForm();
+  const [id, onChangeId] = useForm();
   const [pw, onChangePw] = useForm();
 
   const handleClick = async () => {
     try {
       //로그인 api를 넣어주기
-      const result = await login(email, pw); // state들을 넘겨주기
+      const result = await login(id, pw); // state들을 넘겨주기
       console.log(result);
       const { accessToken, refreshToken } = result;
       localStorage.setItem("access", accessToken);
@@ -38,11 +38,11 @@ const FormSection = () => {
     <>
       <Form type="text" inputType="이름" placeholder="이름" />
       <Form
-        type="email"
-        inputType="이메일"
-        placeholder="이메일"
-        value={email}
-        onChange={onChangeEmail}
+        type="id"
+        inputType="아이디"
+        placeholder="아이디"
+        value={id}
+        onChange={onChangeId}
       />
       <Form
         type="password"

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Button } from "./common";
 import { ThemeContext } from "../../context/context";
-import { isSubmitedAtom, emailAtom, userNameAtom } from "../../recoil/atoms";
+import { isSubmitedAtom, idAtom, userNameAtom } from "../../recoil/atoms";
 import { useRecoilValue } from "recoil";
 
 // childeren으로 하위 컴포넌트를 받아왔기 때문에 children 안에 하위 컴포넌트가 다 들어감
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
   // mode의 main 컬러를 props로 받아옴
 
   const userName = useRecoilValue(userNameAtom);
-  const email = useRecoilValue(emailAtom);
+  const id = useRecoilValue(idAtom);
   const isSubmited = useRecoilValue(isSubmitedAtom);
 
   return (
@@ -52,7 +52,7 @@ const Layout = ({ children }) => {
         </Header>
         <div>{children}</div>
         <Footer mode={mode.main}>
-          {!isSubmited ? "" : `${userName}의 공간 || 이메일 주소 ${email}`}
+          {!isSubmited ? "" : `${userName}의 공간 || 이메일 주소 ${id}`}
         </Footer>
       </Wrapper>
     </ThemeContext.Provider>

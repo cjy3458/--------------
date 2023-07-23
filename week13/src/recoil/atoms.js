@@ -1,12 +1,12 @@
 import { atom } from "recoil";
 
 export const userNameAtom = atom({
-  key: "useName",
+  key: "userName",
   default: "ooo",
 });
 
-export const emailAtom = atom({
-  key: "email",
+export const idAtom = atom({
+  key: "id",
   default: "ooo",
 });
 

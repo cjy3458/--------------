@@ -25,13 +25,15 @@ export const Title = styled.div`
   margin: 20px;
 `;
 
-export const Input = styled.div`
+export const Inputs = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
 
-  input {
+export const Input = styled.input`
+  & {
     font-size: 15px;
     color: #222222;
     width: 300px;
@@ -45,23 +47,11 @@ export const Input = styled.div`
     margin-bottom: 10%;
   }
 
-  input::placeholder {
+  &::placeholder {
     color: #aaaaaa;
   }
-  input:focus {
+  &:focus {
     outline: none;
-  }
-
-  span {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0%;
-    background-color: #666;
-    width: 0;
-    height: 2px;
-    border-radius: 2px;
-    transition: 0.5s;
   }
 
   label {
@@ -73,16 +63,16 @@ export const Input = styled.div`
     transition: all 0.2s;
   }
 
-  input:focus ~ label,
-  input:valid ~ label {
+  &:focus ~ label,
+  &:valid ~ label {
     font-size: 16px;
     bottom: 40px;
     color: #666;
     font-weight: bold;
   }
 
-  input:focus ~ span,
-  input:valid ~ span {
+  &:focus ~ span,
+  &:valid ~ span {
     width: 100%;
   }
 `;
