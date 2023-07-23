@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import Layout from "./components/layout/Layout";
-import Signup from "./pages/Signup";
 
 // 라우터를 미리 설정하고 컴포넌트 만들기
 // 홈페이지와 내가 만들 페이지들 개수만큼 Route 생성
@@ -17,7 +16,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/mypage" element={<MyPage />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>

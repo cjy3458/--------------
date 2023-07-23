@@ -5,8 +5,8 @@ export const userNameAtom = atom({
   default: "ooo",
 });
 
-export const idAtom = atom({
-  key: "id",
+export const emailAtom = atom({
+  key: "email",
   default: "ooo",
 });
 
@@ -15,7 +15,7 @@ export const isSubmitedAtom = atom({
   default: "",
 });
 
-export const pwAtom = atom({
-  key: "password",
+export const dateAtom = atom({
+  key: "date",
   default: "",
 });
