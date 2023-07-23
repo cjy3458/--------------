@@ -30,7 +30,7 @@ const MyPage = () => {
   return (
     <Wrapper>
       <Title>Welcome {userName}</Title>
-      <Button mode={mode.button} onClick={handleDelete}>
+      <Button mode={mode.main} onClick={handleDelete}>
         리셋
       </Button>
     </Wrapper>

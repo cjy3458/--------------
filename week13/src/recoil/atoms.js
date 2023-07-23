@@ -2,15 +2,20 @@ import { atom } from "recoil";
 
 export const userNameAtom = atom({
   key: "useName",
-  default: "OOO",
+  default: "ooo",
 });
 
 export const emailAtom = atom({
   key: "email",
-  default: "000",
+  default: "ooo",
 });
 
 export const isSubmitedAtom = atom({
   key: "isSubmited",
-  default: "000",
+  default: "",
+});
+
+export const pwAtom = atom({
+  key: "password",
+  default: "",
 });
