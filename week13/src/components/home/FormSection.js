@@ -7,6 +7,7 @@ import { isSubmitedAtom } from "../../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Modals from "../modal/modals";
+import styled from "styled-components";
 
 const FormSection = () => {
   const mode = useContext(ThemeContext);
@@ -31,19 +32,27 @@ const FormSection = () => {
 
   return (
     <>
+      <Modals
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onConfirm={handleConfirm}
+      />
       <Form type="text" inputType="이름" />
       <Form type="email" inputType="이메일" />
       <Form type="date" inputType="날짜" />
       <Button mode={mode.button} onClick={handleClick}>
         제출
       </Button>
-      <Modals
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        onConfirm={handleConfirm}
-      />
     </>
   );
 };
 
 export default FormSection;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+`;

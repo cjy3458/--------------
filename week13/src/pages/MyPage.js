@@ -39,9 +39,8 @@ const MyPage = () => {
   return (
     <Wrapper mode={mode.main}>
       <Title>
-        {" "}
-        <Span mode={mode.sub}>&#246;</Span> Welcome {userName}{" "}
-        <Span mode={mode.sub}>&#246;</Span>{" "}
+        <Span mode={mode.sub}>&#246;</Span> Welcome {userName}
+        <Span mode={mode.sub}>&#09;&#246;</Span>
       </Title>
       <Title>제출 날짜: {date} </Title>
       <Button mode={mode.sub} onClick={handleDelete}>
