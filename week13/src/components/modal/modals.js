@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { Button } from "../layout/common";
+import { BtnWrap } from "../layout/common";
 import { ThemeContext } from "../../context/context";
 
 const Modals = ({ isOpen, onClose, onConfirm }) => {
@@ -11,11 +11,16 @@ const Modals = ({ isOpen, onClose, onConfirm }) => {
 
   return ReactDOM.createPortal(
     <>
-      <ModalContent mode={mode.main}>
+      <ModalContent mode={mode.sub}>
         <h2>제출하시겠습니까?</h2>
-        <h2>제출하시겠습니까?</h2>
-        <ModalButton onClick={onConfirm}>확인</ModalButton>
-        <ModalButton onClick={onClose}>취소</ModalButton>
+        <BtnWrap>
+          <ModalButton mode={mode.button} onClick={onConfirm}>
+            확인
+          </ModalButton>
+          <ModalButton mode={mode.button} onClick={onClose}>
+            취소
+          </ModalButton>
+        </BtnWrap>
       </ModalContent>
     </>,
     document.getElementById("modal-root")
@@ -25,7 +30,11 @@ const Modals = ({ isOpen, onClose, onConfirm }) => {
 export default Modals;
 
 const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
+  width: 50%;
   height: 50%;
   top: 50%;
   left: 50%;
@@ -34,10 +43,9 @@ const ModalContent = styled.div`
   background-color: ${(props) => props.mode};
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const ModalButton = styled.span`
+const ModalButton = styled.button`
   all: unset;
   background-color: ${(props) => props.mode};
   color: white;

@@ -36,13 +36,13 @@ const Layout = ({ children }) => {
       <Wrapper>
         <Header mode={mode.main}>
           <Button value="blue" onClick={handleClick}>
-            Blue
+            Blue Theme
           </Button>
           <Button value="green" onClick={handleClick}>
-            Green
+            Green Theme
           </Button>
           <Button value="pink" onClick={handleClick}>
-            Pink
+            Pink Theme
           </Button>
         </Header>
 
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
   display: flex;
-  height: 100px;
+  height: 130px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -80,7 +80,7 @@ const Header = styled.div`
 
 const Footer = styled.div`
   display: flex;
-  height: 50px;
+  height: 80px;
   width: 100%;
   justify-content: center;
   align-items: center;

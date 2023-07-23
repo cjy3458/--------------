@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
-import { Button, Title, Wrapper } from "../components/layout/common";
+import { Button, Span, Title } from "../components/layout/common";
+import styled from "styled-components";
 import { ThemeContext } from "../context/context";
-import { userNameAtom, emailAtom, isSubmitedAtom } from "../recoil/atoms";
+import {
+  userNameAtom,
+  emailAtom,
+  isSubmitedAtom,
+  dateAtom,
+} from "../recoil/atoms";
 import { useResetRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 
@@ -15,22 +21,30 @@ const MyPage = () => {
 
   const resetName = useResetRecoilState(userNameAtom);
   const resetId = useResetRecoilState(emailAtom);
+  const resetDate = useResetRecoilState(dateAtom);
   const reset = useResetRecoilState(isSubmitedAtom);
 
   const userName = useRecoilValue(userNameAtom);
+  const date = useRecoilValue(dateAtom);
 
   const handleDelete = () => {
     reset();
     resetId();
     resetName();
+    resetDate();
 
     navigate("/");
   };
 
   return (
-    <Wrapper>
-      <Title>Welcome {userName}</Title>
-      <Button mode={mode.main} onClick={handleDelete}>
+    <Wrapper mode={mode.main}>
+      <Title>
+        {" "}
+        <Span mode={mode.sub}>&#246;</Span> Welcome {userName}{" "}
+        <Span mode={mode.sub}>&#246;</Span>{" "}
+      </Title>
+      <Title>제출 날짜: {date} </Title>
+      <Button mode={mode.sub} onClick={handleDelete}>
         리셋
       </Button>
     </Wrapper>
@@ -38,3 +52,14 @@ const MyPage = () => {
 };
 
 export default MyPage;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+  width: 100%;
+  border: 5px dashed ${(props) => props.mode};
+  border-radius: 3%;
+`;

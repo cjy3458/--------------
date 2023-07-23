@@ -32,6 +32,15 @@ export const Inputs = styled.div`
   align-items: center;
 `;
 
+export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const Span = styled.span`
+  color: ${(props) => props.mode};
+`;
+
 export const Input = styled.input`
   & {
     font-size: 15px;
