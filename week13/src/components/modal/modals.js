@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { BtnWrap, Title } from "../layout/common";
+import { BtnWrap } from "../layout/common";
 import { ThemeContext } from "../../context/context";
 import { userNameAtom, emailAtom, dateAtom } from "../../recoil/atoms";
 import { useRecoilValue } from "recoil";
@@ -12,6 +12,14 @@ const Modals = ({ isOpen, onClose, onConfirm }) => {
   const email = useRecoilValue(emailAtom);
   const date = useRecoilValue(dateAtom);
 
+  // const modalRef = useRef();
+
+  // const outModal = (e) => {
+  //   if (modalRef.current === e.target) {
+  //     onClose();
+  //   }
+  // };
+
   if (isOpen === false) return null;
   else
     return ReactDOM.createPortal(
@@ -19,9 +27,9 @@ const Modals = ({ isOpen, onClose, onConfirm }) => {
         <ModalBack onClick={onClose} />
         <ModalContent mode={mode.main}>
           <ModalTitle>제출하시겠습니까?</ModalTitle>
-          <ModalDiv>이름: {userName}</ModalDiv>
-          <ModalDiv>이메일: {email}</ModalDiv>
-          <ModalDiv>날짜: {date}</ModalDiv>
+          <ModalDiv>이름 : &nbsp;{userName}</ModalDiv>
+          <ModalDiv>이메일 : &nbsp;{email}</ModalDiv>
+          <ModalDiv>날짜 : &nbsp;{date}</ModalDiv>
           <BtnWrap>
             <ModalButton mode={mode.button} onClick={onConfirm}>
               확인
@@ -47,6 +55,7 @@ const ModalDiv = styled.div`
   padding-bottom: 5px;
   border-bottom: 1px solid white;
   font-weight: 900;
+  margin-bottom: 20px;
 `;
 
 const ModalContent = styled.div`
@@ -54,8 +63,8 @@ const ModalContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  width: 50%;
-  height: 50%;
+  width: 400px;
+  height: 300px;
   top: 50%;
   left: 50%;
   color: white;

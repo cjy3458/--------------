@@ -7,7 +7,6 @@ import { isSubmitedAtom } from "../../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Modals from "../modal/modals";
-import styled from "styled-components";
 
 const FormSection = () => {
   const mode = useContext(ThemeContext);
@@ -48,11 +47,3 @@ const FormSection = () => {
 };
 
 export default FormSection;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-`;
