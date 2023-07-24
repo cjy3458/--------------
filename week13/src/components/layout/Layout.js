@@ -72,7 +72,7 @@ const Header = styled.div`
   display: flex;
   height: 130px;
   width: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   background-color: ${(props) => props.mode};

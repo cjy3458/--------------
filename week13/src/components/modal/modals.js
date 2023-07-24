@@ -12,31 +12,42 @@ const Modals = ({ isOpen, onClose, onConfirm }) => {
   const email = useRecoilValue(emailAtom);
   const date = useRecoilValue(dateAtom);
 
-  if (!isOpen) return null;
-
-  return ReactDOM.createPortal(
-    <>
-      <ModalBack onClick={onClose} />
-      <ModalContent mode={mode.main}>
-        <h3>제출하시겠습니까?</h3>
-        <div>이름: {userName}</div>
-        <div>이메일: {email}</div>
-        <div>날짜: {date}</div>
-        <BtnWrap>
-          <ModalButton mode={mode.button} onClick={onConfirm}>
-            확인
-          </ModalButton>
-          <ModalButton mode={mode.button} onClick={onClose}>
-            취소
-          </ModalButton>
-        </BtnWrap>
-      </ModalContent>
-    </>,
-    document.getElementById("modal-root")
-  );
+  if (isOpen === false) return null;
+  else
+    return ReactDOM.createPortal(
+      <>
+        <ModalBack onClick={onClose} />
+        <ModalContent mode={mode.main}>
+          <ModalTitle>제출하시겠습니까?</ModalTitle>
+          <ModalDiv>이름: {userName}</ModalDiv>
+          <ModalDiv>이메일: {email}</ModalDiv>
+          <ModalDiv>날짜: {date}</ModalDiv>
+          <BtnWrap>
+            <ModalButton mode={mode.button} onClick={onConfirm}>
+              확인
+            </ModalButton>
+            <ModalButton mode={mode.button} onClick={onClose}>
+              취소
+            </ModalButton>
+          </BtnWrap>
+        </ModalContent>
+      </>,
+      document.body
+    );
 };
 
 export default Modals;
+
+const ModalTitle = styled.h3`
+  text-align: center;
+`;
+
+const ModalDiv = styled.div`
+  font-size: 17px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+  font-weight: 900;
+`;
 
 const ModalContent = styled.div`
   display: flex;
@@ -60,15 +71,17 @@ const ModalButton = styled.button`
   background-color: ${(props) => props.mode};
   color: white;
   padding: 10px;
+  font-weight: 900;
   border-radius: 20px;
+
   cursor: pointer;
 `;
 
 const ModalBack = styled.div`
   display: block;
   position: fixed;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
