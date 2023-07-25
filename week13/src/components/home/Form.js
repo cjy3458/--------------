@@ -21,7 +21,7 @@ const Form = ({ type, inputType }) => {
       setDate(data);
     }
   };
-
+  console.log(emailAtom.value);
   return (
     <Wrapper>
       <Input placeholder={inputType} type={type} onChange={onChange} />
