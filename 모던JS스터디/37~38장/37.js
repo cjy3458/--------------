@@ -88,3 +88,21 @@ console.log(map); // { { name: gyu } => "developer" } 출력
 
 console.log(map.get(jay)); // designer 출력
 console.log(map.get(gyu)); // developer 출력
+
+const Person = class MyClass {};
+
+const me = new Person();
+console.log(me);
+
+class Rec {
+  constructor(width, height) {
+    console.log(this);
+    console.log(new.target);
+  }
+}
+
+const a = new Rec(1, 4);
+
+const av = () => {
+  console.log(map1);
+};
