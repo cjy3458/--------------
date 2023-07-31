@@ -198,8 +198,6 @@ isNaN(10); // false
 isNaN("JaeYoung"); // 숫자로 타입 변환 후 검사 true
 isNaN("10"); // false
 
-
-
 var x = 10; // 전역 변수
 
 function de() {
@@ -286,7 +284,6 @@ const student = {
 // 메서드 getName을 호출한 객체는 student이다.
 console.log(student.getName()); // Jae Young
 
-
 function Circle(r) {
   // 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스
   this.r = r;
@@ -298,4 +295,16 @@ function Circle(r) {
 const circle1 = new Circle(5);
 console.log(circle1.getDiameter());
 
+// mkdir json-server-exam
 
+// cd json-server-exam
+
+// npm init -y
+
+// npm install json-server --save-dev // json서버 설치 코드
+
+// npm install -g json-server
+
+// json-server watch db.json
+
+// json-server --watch db.json --port 5000
