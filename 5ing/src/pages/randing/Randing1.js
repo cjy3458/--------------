@@ -56,6 +56,7 @@ const Image2 = styled.img`
 const Image3 = styled.img`
   position: absolute;
   bottom: 0;
+  margin-bottom: 1%;
   width: 100%;
 `;
 
