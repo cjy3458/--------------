@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 800px;
+  height: 600px;
   background-color: #89cdf6;
 `;
 
