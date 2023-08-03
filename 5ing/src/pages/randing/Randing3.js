@@ -46,10 +46,10 @@ const DuckWrap = styled.div`
 `;
 
 const Floor = styled.div`
-  position: absolute; /* Floor를 절대적인 위치로 설정 */
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 150px; /* Floor의 높이를 설정 */
+  height: 150px;
   background-color: #8fc48a;
 `;
 
