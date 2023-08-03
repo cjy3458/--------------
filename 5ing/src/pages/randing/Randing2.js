@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
+  margin-left: 6.2%;
   margin-top: 7%;
   color: #454545;
   font-family: SUITE;
@@ -42,4 +43,5 @@ const Text = styled.div`
   line-height: normal;
   padding-left: 40px;
   margin-top: 3%;
+  margin-left: 6.2%;
 `;

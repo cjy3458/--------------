@@ -34,7 +34,7 @@ const Image2 = styled.img`
   width: 80%;
   position: absolute;
   bottom: 0;
-  margin-bottom: 124px;
+  margin-bottom: 92px;
   z-index: 1;
 `;
 
@@ -49,11 +49,12 @@ const Floor = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 150px;
+  height: 110px;
   background-color: #8fc48a;
 `;
 
 const Title = styled.div`
+  margin-left: 6.3%;
   margin-top: 5%;
   color: #454545;
   font-family: SUITE;
