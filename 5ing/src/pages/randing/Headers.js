@@ -36,6 +36,7 @@ const Logo = styled.img`
   width: 120px;
   height: 33px;
 `;
+
 export const LoginBtn = styled.button`
   all: unset;
   background-color: white;

@@ -37,7 +37,6 @@ export const Wrapper3 = styled.div`
 export const Information = styled.div`
   font-size: 25px;
 `;
-
 export const Inputs = styled.div`
   display: flex;
   align-items: center;
