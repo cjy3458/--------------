@@ -7,6 +7,5 @@ export const signUp = async (id, pw, name, age) => {
     name,
     age,
   });
-
   return result.data;
 };

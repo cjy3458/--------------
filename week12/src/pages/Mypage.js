@@ -14,7 +14,6 @@ const Mypage = () => {
       .then((a) => {
         setData(a); // 데이터를 받아오는데 성공한다면
         setLoading(false); // Loading 상태를 False로 변경
-        console.log(data);
       })
       .catch((error) => {
         alert("로그인 시간 만료", error);
