@@ -18,7 +18,16 @@ test("이름과 나이를 전달받아서 객체 반환", () => {
   expect(
     fn.makeUser("Jay", 30).toBe({
       name: "Jay",
-      age: 25,
+      age: 30,
+    })
+  );
+});
+
+test("이름과 나이를 전달받아서 객체 반환", () => {
+  expect(
+    fn.makeUser("Jay", 30).toStrictEqual({
+      name: "Jay",
+      age: 30,
     })
   );
 });
