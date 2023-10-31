@@ -1,10 +1,10 @@
-import Counter from "./components/test/Counter";
+import Count from "./components/Count";
 import styled from "styled-components";
 
 function App() {
   return (
     <Wrapper>
-      <Counter />
+      <Count />
     </Wrapper>
   );
 }
